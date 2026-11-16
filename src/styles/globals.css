@@ -426,6 +426,112 @@ body {
   animation: skills-float 6s ease-in-out infinite;
 }
 
+/* ---------- Certifications section ---------- */
+
+@keyframes cert-shimmer {
+  0% {
+    background-position: 200% center;
+  }
+  100% {
+    background-position: -200% center;
+  }
+}
+
+.cert-label {
+  background: linear-gradient(
+    90deg,
+    var(--grad-from),
+    var(--grad-to),
+    var(--text-muted),
+    var(--grad-to),
+    var(--grad-from)
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: cert-shimmer 6s linear infinite;
+}
+
+@keyframes cert-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--grad-from) 55%, transparent);
+  }
+  60% {
+    box-shadow: 0 0 0 9px transparent;
+  }
+}
+
+.cert-dot {
+  animation: cert-pulse 2.6s ease-out infinite;
+}
+
+.cert-tilt {
+  position: relative;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  transition:
+    transform 0.14s ease-out,
+    border-color 0.3s ease-out,
+    box-shadow 0.3s ease-out;
+  will-change: transform;
+}
+
+.cert-tilt::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  background: radial-gradient(
+    420px circle at var(--gx, 50%) var(--gy, 0%),
+    rgba(255, 255, 255, 0.13),
+    transparent 62%
+  );
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.cert-card:hover .cert-tilt {
+  border-color: color-mix(in srgb, var(--grad-from) 70%, transparent);
+  box-shadow:
+    0 26px 54px -24px rgba(0, 0, 0, 0.75),
+    0 0 30px -10px color-mix(in srgb, var(--grad-from) 45%, transparent);
+}
+
+.cert-card:hover .cert-tilt::after {
+  opacity: 1;
+}
+
+@keyframes cert-zoom-in {
+  from {
+    opacity: 0;
+    transform: scale(0.92) translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.cert-zoom-in {
+  animation: cert-zoom-in 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes cert-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.cert-fade-in {
+  animation: cert-fade-in 0.3s ease both;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .marquee-track {
     animation: none;
