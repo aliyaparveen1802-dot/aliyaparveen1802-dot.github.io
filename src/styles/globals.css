@@ -1,0 +1,161 @@
+@import "tailwindcss";
+
+@theme {
+  --font-inter: "Inter", sans-serif;
+  --font-tight: "Inter Tight", "Inter", sans-serif;
+  --font-work: "Work Sans", "Inter", sans-serif;
+
+  --breakpoint-sm: 40rem;
+  --breakpoint-md: 50.625rem;
+  --breakpoint-lg: 63.75rem;
+  --breakpoint-xl: 87.5rem;
+}
+
+:root {
+  --bg: #060608;
+  --bg-footer: #050505;
+  --text: #fcfcfc;
+  --text-strong: #ffffff;
+  --text-muted: #7e7e97;
+  --text-dim: #999999;
+  --text-about: #e3e4e6;
+  --text-footer: #808080;
+  --heading-case: #ababba;
+  --heading-case-label: #5c5c6a;
+  --chip-bg: #1a1a1a;
+  --chip-text: #999999;
+  --chip-link: #0099ff;
+  --border-soft: #424257;
+  --border-card: #1c1c25;
+  --pill-bg: #f5f8fd;
+  --pill-text: #060608;
+  --heading-collab: #e4e4e7;
+  --accent: #a43889;
+  --grad-from: #bc3cd8;
+  --grad-to: #c44b8c;
+  --tile-bg: #1c1c25;
+  color-scheme: dark;
+}
+
+html[data-theme="light"] {
+  --bg: #f5f8fd;
+  --bg-footer: #eef2f9;
+  --text: #1a1a23;
+  --text-strong: #060608;
+  --text-muted: #5c5c6a;
+  --text-dim: #6b6b7b;
+  --text-about: #2a2a35;
+  --text-footer: #6b6b7b;
+  --heading-case: #0c0c13;
+  --heading-case-label: #7e7e97;
+  --chip-bg: #ffffff;
+  --chip-text: #5c5c6a;
+  --chip-link: #0055ff;
+  --border-soft: #b9b9cc;
+  --border-card: #d8dcea;
+  --pill-bg: #060608;
+  --pill-text: #f5f8fd;
+  --heading-collab: #424257;
+  --tile-bg: #ffffff;
+  color-scheme: light;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: auto;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-inter);
+  font-size: 16px;
+  overflow-x: hidden;
+  transition: background-color 0.35s ease, color 0.35s ease;
+}
+
+::selection {
+  background: var(--grad-from);
+  color: #fff;
+}
+
+.grad-text {
+  background: linear-gradient(270deg, var(--grad-from) 0%, var(--grad-to) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Tools marquee */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  animation: marquee 28s linear infinite;
+  will-change: transform;
+}
+
+.marquee-mask {
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 8%,
+    black 92%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 8%,
+    black 92%,
+    transparent 100%
+  );
+}
+
+/* Reveal helpers (GSAP sets final state; these are initial states) */
+.reveal-line {
+  overflow: hidden;
+  display: block;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
