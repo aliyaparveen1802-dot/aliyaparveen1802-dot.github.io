@@ -347,7 +347,7 @@ const flush = (page) =>
   });
   check(
     "light theme: gallery uses portfolio palette",
-    colors.bg === "rgb(245, 248, 253)" && colors.heading === "rgb(6, 6, 8)",
+    colors.bg === "rgb(245, 248, 253)" && colors.heading === "rgb(194, 65, 12)",
     JSON.stringify(colors)
   );
   const el = await page.$("#case-studies");

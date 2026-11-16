@@ -289,14 +289,14 @@ const selectedThumb = (page) =>
   await page.setViewport({ width: 1440, height: 900 });
   await openCase(page);
   await page.evaluate(() => document.documentElement.setAttribute("data-theme", "light"));
-  await sleep(300);
+  await sleep(750);
   const theme = await page.evaluate(() => ({
     head: getComputedStyle(document.querySelector("#showcase h2")).color,
     chip: getComputedStyle(document.querySelector("#showcase aside")).backgroundColor,
   }));
   check(
     "light theme: section uses light palette",
-    theme.head === "rgb(12, 12, 19)" && theme.chip === "rgb(255, 255, 255)",
+    theme.head === "rgb(194, 65, 12)" && theme.chip === "rgb(255, 255, 255)",
     JSON.stringify(theme)
   );
   await page.screenshot({ path: `${OUT}/showcase-light.png` });

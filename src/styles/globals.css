@@ -21,7 +21,7 @@
   --text-about: #e3e4e6;
   --text-footer: #808080;
   --heading-case: #ababba;
-  --heading-case-label: #5c5c6a;
+  --heading-case-label: color-mix(in srgb, var(--heading-accent) 80%, var(--bg));
   --chip-bg: #1a1a1a;
   --chip-text: #999999;
   --chip-link: #0099ff;
@@ -30,9 +30,11 @@
   --pill-bg: #f5f8fd;
   --pill-text: #060608;
   --heading-collab: #e4e4e7;
-  --accent: #a43889;
-  --grad-from: #bc3cd8;
-  --grad-to: #c44b8c;
+  --heading-accent: #ff7a1a;
+  --heading-accent-glow: rgba(255, 122, 26, 0.26);
+  --accent: #ff7a1a;
+  --grad-from: #ff8a33;
+  --grad-to: #ff6a00;
   --tile-bg: #1c1c25;
   color-scheme: dark;
 }
@@ -47,7 +49,7 @@ html[data-theme="light"] {
   --text-about: #2a2a35;
   --text-footer: #6b6b7b;
   --heading-case: #0c0c13;
-  --heading-case-label: #7e7e97;
+  --heading-case-label: #c2410c;
   --chip-bg: #ffffff;
   --chip-text: #5c5c6a;
   --chip-link: #0055ff;
@@ -56,6 +58,11 @@ html[data-theme="light"] {
   --pill-bg: #060608;
   --pill-text: #f5f8fd;
   --heading-collab: #424257;
+  --heading-accent: #c2410c;
+  --heading-accent-glow: rgba(194, 65, 12, 0.14);
+  --accent: #c2410c;
+  --grad-from: #c2410c;
+  --grad-to: #9a3412;
   --tile-bg: #ffffff;
   color-scheme: light;
 }
@@ -107,6 +114,23 @@ body {
   background-clip: text;
   color: transparent;
   -webkit-text-fill-color: transparent;
+}
+
+/* Global premium orange headings — one accent shade across every page */
+h1,
+h2,
+.hero-name {
+  color: var(--heading-accent);
+  text-shadow: 0 0 34px var(--heading-accent-glow);
+  transition:
+    color 0.45s ease,
+    text-shadow 0.45s ease;
+}
+
+h1:hover,
+h2:hover,
+.hero-name:hover {
+  color: color-mix(in srgb, var(--heading-accent) 72%, #ffffff 28%);
 }
 
 /* Tools marquee */
