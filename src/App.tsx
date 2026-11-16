@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar";
 import Preloader from "./components/Preloader";
 import Hero from "./components/Hero";
 import ProjectSection from "./components/ProjectSection";
+import MyDesignJourney from "./components/MyDesignJourney";
 import CaseStudies from "./components/CaseStudies";
 import About from "./components/About";
 import Contact from "./components/Contact";
@@ -48,16 +49,19 @@ export default function App() {
             <div className="order-2">
               <ProjectSection />
             </div>
-            <div className="order-3 md:order-4">
+            <div className="order-3">
+              <MyDesignJourney />
+            </div>
+            <div className="order-4 md:order-5">
               <About />
             </div>
-            <div className="order-4 md:order-3">
+            <div className="order-5 md:order-4">
               <CaseStudies />
             </div>
-            <div className="order-5">
+            <div className="order-6">
               <Contact />
             </div>
-            <div className="order-6">
+            <div className="order-7">
               <Footer />
             </div>
           </>
