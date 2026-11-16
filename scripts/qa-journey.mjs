@@ -436,7 +436,7 @@ const rectFn = `
   });
   check(
     "light theme: section uses portfolio light palette",
-    colors.bg === "rgb(245, 248, 253)" && colors.heading === "rgb(194, 65, 12)",
+    colors.bg === "rgb(245, 248, 253)" && colors.heading === "rgb(6, 6, 8)",
     JSON.stringify(colors)
   );
 

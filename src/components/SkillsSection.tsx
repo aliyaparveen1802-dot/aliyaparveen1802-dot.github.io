@@ -140,7 +140,7 @@ export default function SkillsSection() {
                     {tools.map((tool, i) => (
                       <span
                         key={tool.name}
-                        className="tool-btn group/tool flex flex-col items-center gap-2 rounded-[16px] border border-[color:var(--border-card)] bg-[color:var(--bg)]/60 px-2 py-3.5 transition-all duration-300 hover:scale-[1.06] hover:border-[color:var(--grad-from)] hover:shadow-[0_0_22px_-6px_rgba(255,122,26,0.65)]"
+                        className="tool-btn group/tool flex flex-col items-center gap-2 rounded-[16px] border border-[color:var(--border-card)] bg-[color:var(--bg)]/60 px-2 py-3.5 transition-all duration-300 hover:scale-[1.06] hover:border-[color:var(--grad-from)] hover:shadow-[0_0_22px_-6px_rgba(188,60,216,0.65)]"
                       >
                         <span
                           className="tool-float flex h-9 w-9 items-center justify-center rounded-[10px] bg-white p-[6px] shadow-[0_3px_8px_rgba(0,0,0,0.28)]"
@@ -166,7 +166,7 @@ export default function SkillsSection() {
                     {cat.items.map((item) => (
                       <span
                         key={item}
-                        className="skill-chip cursor-default select-none rounded-full border border-[color:var(--border-card)] bg-[color:var(--bg)]/70 px-3.5 py-2 text-[13px] leading-none text-[color:var(--text-muted)] transition-all duration-300 hover:scale-[1.05] hover:border-[color:var(--grad-from)] hover:bg-[color:var(--chip-bg)] hover:text-[color:var(--text-strong)] hover:shadow-[0_0_18px_-5px_rgba(255,122,26,0.7)]"
+                        className="skill-chip cursor-default select-none rounded-full border border-[color:var(--border-card)] bg-[color:var(--bg)]/70 px-3.5 py-2 text-[13px] leading-none text-[color:var(--text-muted)] transition-all duration-300 hover:scale-[1.05] hover:border-[color:var(--grad-from)] hover:bg-[color:var(--chip-bg)] hover:text-[color:var(--text-strong)] hover:shadow-[0_0_18px_-5px_rgba(188,60,216,0.7)]"
                       >
                         {item}
                       </span>

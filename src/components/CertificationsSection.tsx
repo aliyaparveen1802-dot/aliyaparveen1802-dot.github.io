@@ -297,7 +297,7 @@ export default function CertificationsSection() {
                     <button
                       type="button"
                       onClick={(e) => openCert(cert, e.currentTarget.closest(".cert-card"))}
-                      className="inline-flex items-center gap-2 rounded-full border border-[color:var(--border-soft)] bg-[color:var(--bg)] px-4 py-2 text-[13px] font-medium text-[color:var(--text-strong)] transition-all duration-300 hover:border-[color:var(--grad-from)] hover:shadow-[0_0_18px_-6px_rgba(255,122,26,0.65)]"
+                      className="inline-flex items-center gap-2 rounded-full border border-[color:var(--border-soft)] bg-[color:var(--bg)] px-4 py-2 text-[13px] font-medium text-[color:var(--text-strong)] transition-all duration-300 hover:border-[color:var(--grad-from)] hover:shadow-[0_0_18px_-6px_rgba(188,60,216,0.65)]"
                     >
                       <Maximize2 size={13} />
                       View Certificate

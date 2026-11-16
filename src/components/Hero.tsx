@@ -95,7 +95,7 @@ export default function Hero({ ready }: HeroProps) {
                     className={`hero-word inline-block ${
                       w.accent
                         ? "text-[color:var(--accent)]"
-                        : "text-[color:var(--heading-accent)]"
+                        : "text-[color:var(--text-strong)]"
                     }`}
                     style={hidden ? { opacity: 0 } : undefined}
                   >

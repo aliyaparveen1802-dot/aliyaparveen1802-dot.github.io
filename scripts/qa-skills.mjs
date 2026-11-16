@@ -393,7 +393,7 @@ async function openHome(page) {
   await page.setViewport({ width: 1440, height: 900 });
   await openHome(page);
   await page.evaluate(() => document.documentElement.setAttribute("data-theme", "light"));
-  await sleep(750);
+  await sleep(400);
 
   const theme = await page.evaluate(() => {
     const h2 = document.querySelector("#skills h2");
@@ -406,7 +406,7 @@ async function openHome(page) {
       cardBg: getComputedStyle(card).backgroundColor,
     };
   });
-  check("light theme: heading uses bright orange accent", theme.head !== theme.chipFg && theme.head === "rgb(194, 65, 12)", theme.head);
+  check("light theme: heading switches to dark ink", theme.head !== theme.chipFg && theme.head === "rgb(12, 12, 19)", theme.head);
   check("light theme: chip text legible on chip bg", theme.chipFg !== theme.chipBg && theme.chipBg !== "rgba(0, 0, 0, 0)", JSON.stringify({ fg: theme.chipFg, bg: theme.chipBg }));
 
   await page.evaluate(() => document.querySelector("#skills").scrollIntoView({ block: "start" }));

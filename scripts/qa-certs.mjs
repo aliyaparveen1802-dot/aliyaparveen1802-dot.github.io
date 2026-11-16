@@ -533,7 +533,7 @@ async function openHome(page) {
   await page.setViewport({ width: 1440, height: 900 });
   await openHome(page);
   await page.evaluate(() => document.documentElement.setAttribute("data-theme", "light"));
-  await sleep(750);
+  await sleep(400);
 
   const theme = await page.evaluate(() => {
     const h2 = document.querySelector("#certifications h2");
@@ -546,8 +546,8 @@ async function openHome(page) {
     };
   });
   check(
-    "light theme: heading uses bright orange accent",
-    theme.head === "rgb(194, 65, 12)",
+    "light theme: heading switches to dark ink",
+    theme.head === "rgb(12, 12, 19)",
     theme.head
   );
   check(
