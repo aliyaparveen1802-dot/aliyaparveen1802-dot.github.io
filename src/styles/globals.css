@@ -348,6 +348,84 @@ body {
   animation: cs-float 7s ease-in-out infinite;
 }
 
+/* ---------- Skills & Tools section ---------- */
+
+.glass-card {
+  position: relative;
+  border: 1px solid color-mix(in srgb, var(--border-card) 85%, transparent);
+  background:
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--grad-from) 7%, transparent) 0%,
+      transparent 45%
+    ),
+    color-mix(in srgb, var(--chip-bg) 72%, transparent);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.skills-grid-bg {
+  background-image: radial-gradient(
+    color-mix(in srgb, var(--border-card) 70%, transparent) 1px,
+    transparent 1px
+  );
+  background-size: 30px 30px;
+  -webkit-mask-image: radial-gradient(
+    ellipse at center,
+    black 0%,
+    transparent 78%
+  );
+  mask-image: radial-gradient(ellipse at center, black 0%, transparent 78%);
+}
+
+@keyframes skills-orb-a {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(46px, -34px) scale(1.07);
+  }
+  66% {
+    transform: translate(-28px, 26px) scale(0.95);
+  }
+}
+
+.skills-orb-a {
+  animation: skills-orb-a 19s ease-in-out infinite;
+}
+
+@keyframes skills-orb-b {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(-40px, 30px) scale(0.94);
+  }
+  66% {
+    transform: translate(30px, -24px) scale(1.06);
+  }
+}
+
+.skills-orb-b {
+  animation: skills-orb-b 24s ease-in-out infinite;
+}
+
+@keyframes skills-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.tool-float {
+  animation: skills-float 6s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .marquee-track {
     animation: none;

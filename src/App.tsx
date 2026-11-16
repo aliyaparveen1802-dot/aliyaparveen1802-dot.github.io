@@ -5,6 +5,7 @@ import Hero from "./components/Hero";
 import ProjectSection from "./components/ProjectSection";
 import MyDesignJourney from "./components/MyDesignJourney";
 import ProjectGallery from "./components/ProjectGallery";
+import SkillsSection from "./components/SkillsSection";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
@@ -52,16 +53,19 @@ export default function App() {
             <div className="order-3">
               <MyDesignJourney />
             </div>
-            <div className="order-4 md:order-5">
+            <div className="order-4 md:order-6">
               <About />
             </div>
             <div className="order-5 md:order-4">
               <ProjectGallery />
             </div>
-            <div className="order-6">
-              <Contact />
+            <div className="order-6 md:order-5">
+              <SkillsSection />
             </div>
             <div className="order-7">
+              <Contact />
+            </div>
+            <div className="order-8">
               <Footer />
             </div>
           </>
