@@ -6,7 +6,7 @@ export default function CaseStudyFlows() {
   return (
     <Section
       id="flows"
-      label="Section 08 — User Flow"
+      label="Section 09 — User Flow"
       title="Three flows that carry the traveller forward."
       intro="Each flow keeps the number of decisions low and the next step visible — from booking a flight to reaching the boarding gate."
       className="border-t border-[color:var(--border-card)]"

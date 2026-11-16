@@ -107,9 +107,9 @@ async function rect(page, sel) {
   check("case study: h1 is SkyVoyage", h1 === "SkyVoyage", h1);
 
   const sections = await page.$$eval("section[id]", (els) => els.map((e) => e.id));
-  const required = ["top", "problem", "solution", "personas", "journey", "mapping", "ia", "flows", "decisions", "final"];
+  const required = ["top", "problem", "solution", "showcase", "personas", "journey", "mapping", "ia", "flows", "decisions", "final"];
   const missing = required.filter((id) => !sections.includes(id));
-  check("case study: all 10 sections present", missing.length === 0, missing.length ? `missing: ${missing.join(",")}` : sections.join(","));
+  check("case study: all 11 sections present", missing.length === 0, missing.length ? `missing: ${missing.join(",")}` : sections.join(","));
 
   const navText = await page.$eval("nav", (el) => el.textContent);
   check("case study nav: Back to Portfolio", navText.includes("Back to Portfolio"));

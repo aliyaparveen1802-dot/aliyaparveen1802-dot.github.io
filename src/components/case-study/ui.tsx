@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { BatteryFull, Signal, Wifi } from "lucide-react";
 
 export function Section({
   id,
@@ -68,6 +69,7 @@ export function Frame({
   imgClassName = "",
   parallax = false,
   priority = false,
+  reveal = true,
 }: {
   src: string;
   alt: string;
@@ -77,9 +79,13 @@ export function Frame({
   imgClassName?: string;
   parallax?: boolean;
   priority?: boolean;
+  reveal?: boolean;
 }) {
   return (
-    <figure data-reveal className={`flex flex-col gap-3 ${className}`}>
+    <figure
+      data-reveal={reveal ? true : undefined}
+      className={`flex flex-col gap-3 ${className}`}
+    >
       <div className="overflow-hidden rounded-[16px] border border-[color:var(--border-card)] bg-[color:var(--chip-bg)]">
         <div className="flex items-center gap-2 border-b border-[color:var(--border-card)] px-4 py-3">
           <span className="h-2.5 w-2.5 rounded-full bg-[#3a3a48]" />
@@ -102,6 +108,70 @@ export function Frame({
       </div>
       {caption && (
         <figcaption className="text-[13px] leading-[1.7] text-[color:var(--text-dim)]">
+          {caption}
+        </figcaption>
+      )}
+    </figure>
+  );
+}
+
+export function PhoneFrame({
+  src,
+  alt,
+  caption,
+  className = "",
+  reveal = true,
+  float = false,
+  floatDelay = 0,
+  priority = false,
+}: {
+  src: string;
+  alt: string;
+  caption?: ReactNode;
+  className?: string;
+  reveal?: boolean;
+  float?: boolean;
+  floatDelay?: number;
+  priority?: boolean;
+}) {
+  return (
+    <figure
+      data-reveal={reveal ? true : undefined}
+      className={`group flex flex-col gap-4 ${className}`}
+    >
+      <div className="transition-all duration-500 ease-out group-hover:-translate-y-2.5">
+        <div
+          className={`rounded-[44px] border border-[#3a3a48]/70 bg-gradient-to-b from-[#26262f] via-[#15151c] to-[#0c0c12] p-[10px] shadow-[0_44px_90px_-30px_rgba(0,0,0,0.85)] transition-all duration-500 ease-out group-hover:border-[#E6FF19]/40 group-hover:shadow-[0_60px_110px_-32px_rgba(0,0,0,0.95)] ${float ? "cs-float" : ""}`}
+          style={float ? { animationDelay: `${floatDelay}s` } : undefined}
+        >
+        <div className="relative w-full overflow-hidden rounded-[36px] bg-black">
+          <span
+            aria-hidden="true"
+            className="absolute left-1/2 top-[9px] z-20 h-[22px] w-[72px] -translate-x-1/2 rounded-full bg-black"
+          />
+          <div className="relative z-10 flex items-center justify-between bg-[#07131c] px-6 pt-2.5 pb-1 text-[11px] font-semibold text-white/90">
+            <span>9:41</span>
+            <span className="flex items-center gap-1.5" aria-hidden="true">
+              <Signal size={12} strokeWidth={2.4} />
+              <Wifi size={12} strokeWidth={2.4} />
+              <BatteryFull size={15} strokeWidth={2} />
+            </span>
+          </div>
+          <img
+            src={src}
+            alt={alt}
+            loading={priority ? "eager" : "lazy"}
+            decoding="async"
+            className="block w-full"
+          />
+          <div className="flex justify-center bg-[#07131c] pt-2 pb-2.5">
+            <span className="h-[4px] w-[112px] rounded-full bg-white/60" />
+          </div>
+        </div>
+        </div>
+      </div>
+      {caption && (
+        <figcaption className="flex flex-col gap-1.5 text-[13px] leading-[1.7] text-[color:var(--text-dim)]">
           {caption}
         </figcaption>
       )}

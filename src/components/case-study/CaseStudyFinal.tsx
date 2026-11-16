@@ -1,12 +1,12 @@
 import { ArrowLeft, ArrowUpRight, Check } from "lucide-react";
 import { finalHighlights, LIVE_PRODUCT_URL, skyvoyageImages } from "../../data/skyvoyage";
-import { Frame, Section, Tag } from "./ui";
+import { Frame, PhoneFrame, Section, Tag } from "./ui";
 
 export default function CaseStudyFinal() {
   return (
     <Section
       id="final"
-      label="Section 10 — Final Experience"
+      label="Section 11 — Final Experience"
       title="A calmer way to travel."
       intro="The shipped product connects every step of the journey — from the first search to the boarding gate — in one interface."
       className="border-t border-[color:var(--border-card)]"
@@ -42,7 +42,7 @@ export default function CaseStudyFinal() {
           caption="Live flight tracking — status, terminal, gate and boarding time in one view."
           className="md:col-span-2"
         />
-        <Frame
+        <PhoneFrame
           src={skyvoyageImages.trackingMobile}
           alt="SkyVoyage flight tracking on mobile"
           caption="The same journey, sized for a phone."

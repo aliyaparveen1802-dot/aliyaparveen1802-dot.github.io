@@ -20,6 +20,114 @@ export const skyvoyageImages = {
   onboarding: "/screenshots/sv-onboarding.png",
 };
 
+export const designTokens = [
+  { label: "Accent", value: "Acid lime · #E6FF19", color: "#E6FF19" },
+  { label: "Surface", value: "Deep navy · #07131C", color: "#07131C" },
+  { label: "Card", value: "Slate card · #101D25", color: "#101D25" },
+  { label: "Typography", value: "Inter · tight geometric sans", color: null },
+];
+
+export interface ShowcaseScreen {
+  id: string;
+  stage: string;
+  title: string;
+  note: string;
+  image: keyof typeof skyvoyageImages;
+}
+
+export const showcaseScreens: ShowcaseScreen[] = [
+  {
+    id: "welcome",
+    stage: "01 · Welcome",
+    title: "Onboarding & first run",
+    note: "A five-step onboarding introduces search, the airport guide, tracking and journey tools before the traveller books anything — with a skip path for returning users.",
+    image: "onboarding",
+  },
+  {
+    id: "dashboard",
+    stage: "02 · Home",
+    title: "Traveller dashboard",
+    note: "The home dashboard answers “what do I need next?” — next trip, live status, quick actions and journey shortcuts in one calm view.",
+    image: "dashboard",
+  },
+  {
+    id: "search",
+    stage: "03 · Discover",
+    title: "Flight search",
+    note: "Trip type, route, dates and passengers live in a single form. One-way, round-trip and multi-city switch without leaving the screen.",
+    image: "search",
+  },
+  {
+    id: "results",
+    stage: "04 · Compare",
+    title: "Results & fare comparison",
+    note: "Comparable fares, times and airlines with filters and a price calendar, so the decision happens on one screen instead of ten tabs.",
+    image: "results",
+  },
+  {
+    id: "guide",
+    stage: "05 · Airport",
+    title: "Airport guide",
+    note: "Terminal, check-in, gate and facility details for the departure airport — the “what do I do now” screen after arrival.",
+    image: "guide",
+  },
+  {
+    id: "map",
+    stage: "06 · Navigate",
+    title: "Indoor map & explorer",
+    note: "The airport map with facility pins, categories and step-by-step walking routes to gates, lounges and services.",
+    image: "explorer",
+  },
+  {
+    id: "tracking",
+    stage: "07 · Board",
+    title: "Live flight tracking",
+    note: "Status, terminal, gate and boarding time update together in one view, so no traveller tracks the same flight in two apps.",
+    image: "tracking",
+  },
+  {
+    id: "trip",
+    stage: "08 · Journey",
+    title: "My journey details",
+    note: "Ticket, passengers and boarding pass stay one tap away from search to boarding — the traveller's single source of truth.",
+    image: "trip",
+  },
+];
+
+export interface PhoneScreen {
+  id: string;
+  label: string;
+  caption: string;
+  image: keyof typeof skyvoyageImages;
+}
+
+export const phoneScreens: PhoneScreen[] = [
+  {
+    id: "home",
+    label: "Home",
+    caption: "Search form and trip shortcuts, thumb-reachable on mobile.",
+    image: "heroMobile",
+  },
+  {
+    id: "guide",
+    label: "Airport Guide",
+    caption: "Facilities and waiting-time ideas sized for a phone.",
+    image: "guideMobile",
+  },
+  {
+    id: "map",
+    label: "Indoor Map",
+    caption: "Route guidance that stays readable while walking.",
+    image: "explorerMobile",
+  },
+  {
+    id: "tracking",
+    label: "Flight Tracking",
+    caption: "Gate and boarding updates in one glance.",
+    image: "trackingMobile",
+  },
+];
+
 export const projectDetails = [
   { label: "Project Type", value: "UX/UI Design" },
   { label: "Platform", value: "Responsive Web Application" },

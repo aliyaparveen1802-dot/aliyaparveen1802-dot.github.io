@@ -4,6 +4,7 @@ import { scrollToPosition } from "../../hooks/useSmoothScroll";
 import CaseStudyHero from "./CaseStudyHero";
 import CaseStudyProblem from "./CaseStudyProblem";
 import CaseStudySolution from "./CaseStudySolution";
+import CaseStudyShowcase from "./CaseStudyShowcase";
 import CaseStudyPersonas from "./CaseStudyPersonas";
 import CaseStudyJourney from "./CaseStudyJourney";
 import CaseStudyMapping from "./CaseStudyMapping";
@@ -31,6 +32,7 @@ export default function SkyVoyageCaseStudy() {
       <CaseStudyHero />
       <CaseStudyProblem />
       <CaseStudySolution />
+      <CaseStudyShowcase />
       <CaseStudyPersonas />
       <CaseStudyJourney />
       <CaseStudyMapping />

@@ -319,6 +319,35 @@ body {
   }
 }
 
+@keyframes cs-swap-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.cs-swap {
+  animation: cs-swap-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes cs-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+.cs-float {
+  animation: cs-float 7s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .marquee-track {
     animation: none;

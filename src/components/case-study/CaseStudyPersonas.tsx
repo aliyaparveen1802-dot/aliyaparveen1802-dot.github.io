@@ -47,7 +47,7 @@ export default function CaseStudyPersonas() {
   return (
     <Section
       id="personas"
-      label="Section 04 — User Personas"
+      label="Section 05 — User Personas"
       title="Designing for two very different travellers."
       intro="Two contrasting profiles shaped the experience: one needs reassurance and clear guidance, the other needs speed and everything in one place."
       className="border-t border-[color:var(--border-card)]"

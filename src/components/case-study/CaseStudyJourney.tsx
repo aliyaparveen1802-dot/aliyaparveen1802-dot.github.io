@@ -103,7 +103,7 @@ export default function CaseStudyJourney() {
   return (
     <Section
       id="journey"
-      label="Section 05 — User Journey Map"
+      label="Section 06 — User Journey Map"
       title="Where the journey breaks — and where SkyVoyage repairs it."
       intro="Seven stages from first search to boarding. Each stage maps the user action, the thought behind it, the pain involved, the SkyVoyage answer and the emotional state of the traveller."
       className="border-t border-[color:var(--border-card)]"

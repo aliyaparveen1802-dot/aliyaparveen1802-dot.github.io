@@ -5,7 +5,7 @@ export default function CaseStudyDecisions() {
   return (
     <Section
       id="decisions"
-      label="Section 09 — Design Decisions"
+      label="Section 10 — Design Decisions"
       title="Decisions that shaped the interface."
       intro="Every screen had to answer a traveller question quickly. These are the principles applied across the product."
       className="border-t border-[color:var(--border-card)]"

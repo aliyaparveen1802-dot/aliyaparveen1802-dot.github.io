@@ -9,7 +9,7 @@ export default function CaseStudyMapping() {
   return (
     <Section
       id="mapping"
-      label="Section 06 — Pain Point to Solution"
+      label="Section 07 — Pain Point to Solution"
       title="Every problem has a designed answer."
       intro="Hover or tap a problem to see how SkyVoyage responds to it."
       className="border-t border-[color:var(--border-card)]"
