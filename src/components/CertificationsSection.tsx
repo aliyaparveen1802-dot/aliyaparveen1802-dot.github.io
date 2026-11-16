@@ -6,7 +6,6 @@ import {
   Award,
   Clock,
   Frame,
-  GraduationCap,
   Maximize2,
   PenTool,
   Sparkles,
@@ -351,7 +350,11 @@ export default function CertificationsSection() {
                 <span className="inline-flex w-fit items-center gap-2 rounded-full border border-[color:var(--border-card)] bg-[color:var(--bg)] px-3 py-1 text-[11px] font-medium uppercase tracking-[0.18em] text-[color:var(--heading-case-label)]">
                   02 — Education Milestone
                 </span>
-                <GraduationCap size={30} className="text-[color:var(--grad-from)]" strokeWidth={1.7} />
+                <img
+                  src={schoolOfTechies.logo}
+                  alt="School of Techies logo"
+                  className="h-16 w-16 rounded-full shadow-[0_8px_24px_-10px_rgba(0,0,0,0.7)]"
+                />
               </div>
               <div className="relative flex items-center gap-2">
                 {[PenTool, Frame, Sparkles].map((Icon, i) => (
@@ -369,6 +372,12 @@ export default function CertificationsSection() {
             <div className="flex flex-col gap-4 p-6 md:p-8">
               <div className="flex flex-wrap items-center gap-3">
                 <span className="inline-flex items-center gap-2 rounded-full border border-[color:var(--border-card)] bg-[color:var(--bg)] px-3.5 py-1.5 text-[12.5px] font-medium text-[color:var(--text-strong)]">
+                  <img
+                    src={schoolOfTechies.logo}
+                    alt=""
+                    aria-hidden="true"
+                    className="h-5 w-5 rounded-full"
+                  />
                   {schoolOfTechies.institution}
                 </span>
                 <span className="inline-flex items-center gap-1.5 rounded-full border border-[color:var(--border-card)] px-3 py-1.5 text-[12px] text-[color:var(--text-muted)]">

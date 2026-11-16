@@ -56,6 +56,9 @@ export const idfCertificates: Certificate[] = [
 
 export const schoolOfTechies = {
   institution: "School of Techies",
+  /** School of Techies logo — drop a real file into public/logos/ and point here
+   *  (e.g. "/logos/school-of-techies.png") to replace the built-in SVG. */
+  logo: "/logos/school-of-techies.svg",
   program: "UX/UI Design Training",
   duration: "6 Months",
   year: "2024",

@@ -167,11 +167,15 @@ async function openHome(page) {
   );
 
   const sectionAnchors = await page.$$eval("#certifications a", (els) => els.length);
-  const sectionImgs = await page.$$eval("#certifications img", (els) => els.length);
+  const sectionImgs = await page.$$eval("#certifications img", (els) =>
+    els.map((i) => i.getAttribute("src"))
+  );
+  const logosOnly =
+    sectionImgs.length > 0 && sectionImgs.every((s) => s?.startsWith("/logos/school-of-techies"));
   check(
-    "desktop: whole section has zero links / zero images (nothing invented)",
-    sectionAnchors === 0 && sectionImgs === 0,
-    `anchors=${sectionAnchors} imgs=${sectionImgs}`
+    "desktop: no fabricated links; only real School of Techies logo images",
+    sectionAnchors === 0 && logosOnly,
+    `anchors=${sectionAnchors} imgs=${JSON.stringify(sectionImgs)}`
   );
 
   // ---------- 2. Entrance animations ----------
@@ -342,6 +346,21 @@ async function openHome(page) {
     "school: skill chips + timeline illustration icons",
     school.chips.includes("Wireframing") && school.chips.includes("Design workflows"),
     JSON.stringify(school.chips)
+  );
+
+  const logos = await page.evaluate(() =>
+    Array.from(document.querySelectorAll("#certifications .cert-school img")).map((i) => ({
+      src: i.getAttribute("src"),
+      ok: i.complete && i.naturalWidth > 0,
+      alt: i.getAttribute("alt"),
+    }))
+  );
+  check(
+    "school: logo attached (large + chip) and loaded",
+    logos.length === 2 &&
+      logos.every((l) => l.ok && l.src === "/logos/school-of-techies.svg") &&
+      logos.some((l) => l.alt === "School of Techies logo"),
+    JSON.stringify(logos)
   );
 
   const overflow = await page.evaluate(

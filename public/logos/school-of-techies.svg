@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="School of Techies">
+  <circle cx="128" cy="128" r="128" fill="#FFC522"/>
+  <g transform="rotate(16 128 128)">
+    <rect x="108" y="34" width="40" height="150" rx="18" fill="#141414"/>
+    <path d="M108 178 H148 L136 208 H120 Z" fill="#FFE9C6"/>
+    <path d="M120 200 H136 L128 224 Z" fill="#141414"/>
+  </g>
+  <path d="M96 92 L62 130 L96 168" fill="none" stroke="#141414" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M160 92 L194 130 L160 168" fill="none" stroke="#141414" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
