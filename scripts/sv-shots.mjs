@@ -6,7 +6,7 @@ const EDGE =
   process.env.EDGE_PATH ||
   "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe";
 const BASE = "https://skyvoyage-pi.vercel.app";
-const OUT = "C:\\Users\\aliya\\OneDrive\\Desktop\\vs code\\portfolio\\public\\skyvoyage";
+const OUT = "C:\\Users\\aliya\\OneDrive\\Desktop\\vs code\\portfolio\\public\\screenshots";
 
 mkdirSync(OUT, { recursive: true });
 
