@@ -4,7 +4,7 @@ import Preloader from "./components/Preloader";
 import Hero from "./components/Hero";
 import ProjectSection from "./components/ProjectSection";
 import MyDesignJourney from "./components/MyDesignJourney";
-import CaseStudies from "./components/CaseStudies";
+import ProjectGallery from "./components/ProjectGallery";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
@@ -56,7 +56,7 @@ export default function App() {
               <About />
             </div>
             <div className="order-5 md:order-4">
-              <CaseStudies />
+              <ProjectGallery />
             </div>
             <div className="order-6">
               <Contact />

@@ -141,6 +141,44 @@ body {
   );
 }
 
+/* Project gallery — dual-direction seamless marquee */
+.gal-track {
+  animation: gal-marquee 58s linear infinite;
+  will-change: transform;
+}
+
+.gal-track--reverse {
+  animation-name: gal-marquee-reverse;
+  animation-duration: 64s;
+  transform: translateX(-50%);
+}
+
+.gal-paused .gal-track {
+  animation-play-state: paused;
+}
+
+.gal-card:hover {
+  border-color: var(--border-soft);
+}
+
+@keyframes gal-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes gal-marquee-reverse {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
 /* Reveal helpers (GSAP sets final state; these are initial states) */
 .reveal-line {
   overflow: hidden;
@@ -283,6 +321,9 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .marquee-track {
+    animation: none;
+  }
+  .gal-track {
     animation: none;
   }
   .jd-travel {
