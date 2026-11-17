@@ -190,13 +190,13 @@ export default function ProjectGallery() {
       style={{ scrollMarginTop: "30px" }}
     >
       <div className="flex w-full max-w-[1400px] flex-col items-center gap-5 px-5 text-center md:px-8">
-        <div className="gal-eyebrow flex items-center gap-4 text-[11px] font-medium uppercase tracking-[0.34em] text-[color:var(--text-dim)] md:text-[12px]">
+        <div className="gal-eyebrow section-eyebrow-accent flex items-center gap-4 text-[11px] font-medium uppercase tracking-[0.34em] text-[color:var(--text-dim)] md:text-[12px]">
           <span
             aria-hidden="true"
             className="h-px w-9 bg-[color:var(--grad-from)] md:w-12"
           />
           <span>Selected Projects</span>
-          <span className="text-[color:var(--heading-case-label)]">·</span>
+          <span>·</span>
           <span>01 — 09</span>
         </div>
 

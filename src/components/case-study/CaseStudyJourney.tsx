@@ -27,7 +27,7 @@ function EmotionCurve() {
   return (
     <div data-reveal className="hidden overflow-hidden rounded-[16px] border border-[color:var(--border-card)] bg-[color:var(--chip-bg)] p-5 md:block">
       <div className="mb-3 flex items-center justify-between px-1">
-        <span className="text-[11px] font-medium uppercase tracking-[0.18em] text-[color:var(--heading-case-label)]">
+        <span className="section-eyebrow-accent text-[11px] font-medium uppercase tracking-[0.18em] text-[color:var(--heading-case-label)]">
           Emotional experience
         </span>
         <span className="text-[12px] text-[color:var(--text-dim)]">
@@ -89,7 +89,7 @@ function EmotionCurve() {
         {journey.map((stage) => (
           <span
             key={stage.step}
-            className="w-[13%] text-center text-[11px] uppercase tracking-[0.1em] text-[color:var(--heading-case-label)]"
+            className="section-eyebrow-accent w-[13%] text-center text-[11px] uppercase tracking-[0.1em] text-[color:var(--heading-case-label)]"
           >
             {stage.title}
           </span>
@@ -111,7 +111,7 @@ export default function CaseStudyJourney() {
       <EmotionCurve />
 
       <div className="flex items-center justify-between gap-4">
-        <span className="text-[12px] font-medium uppercase tracking-[0.16em] text-[color:var(--heading-case-label)]">
+        <span className="section-eyebrow-accent text-[12px] font-medium uppercase tracking-[0.16em] text-[color:var(--heading-case-label)]">
           Journey timeline
         </span>
         <span className="flex items-center gap-2 text-[13px] text-[color:var(--text-dim)]">
@@ -134,7 +134,7 @@ export default function CaseStudyJourney() {
             >
               <header className="flex items-start justify-between gap-3">
                 <div className="flex flex-col gap-1">
-                  <span className="font-tight text-[12px] font-medium tracking-[0.18em] text-[color:var(--heading-case-label)]">
+                  <span className="section-eyebrow-accent font-tight text-[12px] font-medium tracking-[0.18em] text-[color:var(--heading-case-label)]">
                     {stage.step}
                   </span>
                   <h3 className="font-tight text-[22px] font-medium leading-[1.3] text-[color:var(--text-strong)]">
@@ -152,7 +152,7 @@ export default function CaseStudyJourney() {
 
               <div className="flex flex-col gap-4">
                 <div className="flex flex-col gap-1.5">
-                  <span className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[color:var(--heading-case-label)]">
+                  <span className="section-eyebrow-accent text-[11px] font-semibold uppercase tracking-[0.16em] text-[color:var(--heading-case-label)]">
                     User action
                   </span>
                   <p className="text-[14.5px] leading-[1.7] text-[color:var(--text-about)]">
@@ -161,7 +161,7 @@ export default function CaseStudyJourney() {
                 </div>
 
                 <div className="flex flex-col gap-1.5">
-                  <span className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[color:var(--heading-case-label)]">
+                  <span className="section-eyebrow-accent text-[11px] font-semibold uppercase tracking-[0.16em] text-[color:var(--heading-case-label)]">
                     User thoughts
                   </span>
                   <p className="text-[14.5px] italic leading-[1.7] text-[color:var(--text-muted)]">

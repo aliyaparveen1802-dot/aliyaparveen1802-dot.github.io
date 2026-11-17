@@ -35,7 +35,7 @@ export default function CaseStudyProblem() {
                 <span className="flex h-11 w-11 items-center justify-center rounded-[12px] border border-[color:var(--border-card)] bg-[color:var(--bg)] text-[color:var(--grad-from)] transition-colors duration-300 group-hover:border-[color:var(--border-soft)]">
                   <Icon size={18} strokeWidth={1.7} />
                 </span>
-                <span className="font-tight text-[13px] font-medium tracking-[0.14em] text-[color:var(--heading-case-label)]">
+                <span className="section-eyebrow-accent font-tight text-[13px] font-medium tracking-[0.14em] text-[color:var(--heading-case-label)]">
                   0{i + 1}
                 </span>
               </div>

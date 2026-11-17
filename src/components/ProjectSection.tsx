@@ -103,7 +103,7 @@ export default function ProjectSection() {
     >
       <div className="flex w-full max-w-[1200px] flex-col gap-10">
         <div className="flex items-start gap-4">
-          <p className="proj-label pt-[10px] text-[14px] font-medium text-[color:var(--heading-case-label)]">
+          <p className="proj-label section-eyebrow-accent pt-[10px] text-[14px] font-medium text-[color:var(--heading-case-label)]">
             PROJECT
           </p>
           <div className="flex flex-col gap-4">

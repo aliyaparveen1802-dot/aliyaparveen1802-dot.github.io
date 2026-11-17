@@ -95,7 +95,7 @@ export default function SkillsSection() {
       <div className="relative mx-auto flex w-full max-w-[1200px] flex-col gap-10 md:gap-14">
         {/* Header */}
         <header className="skills-head flex flex-col items-center gap-4 text-center">
-          <span className="flex items-center gap-3 text-[12px] font-medium uppercase tracking-[0.2em] text-[color:var(--heading-case-label)] md:text-[13px]">
+          <span className="section-eyebrow-accent flex items-center gap-3 text-[12px] font-medium uppercase tracking-[0.2em] text-[color:var(--heading-case-label)] md:text-[13px]">
             <span className="h-px w-8 bg-[linear-gradient(90deg,transparent,var(--grad-from))]" />
             Key Skills &amp; Tools · 01 — 06
             <span className="h-px w-8 bg-[linear-gradient(270deg,transparent,var(--grad-from))]" />
@@ -123,7 +123,7 @@ export default function SkillsSection() {
                     {Icon && <Icon size={19} strokeWidth={1.9} />}
                   </span>
                   <div className="flex min-w-0 flex-col gap-1">
-                    <span className="text-[11px] font-medium uppercase tracking-[0.18em] text-[color:var(--heading-case-label)]">
+                    <span className="section-eyebrow-accent text-[11px] font-medium uppercase tracking-[0.18em] text-[color:var(--heading-case-label)]">
                       {cat.index}
                     </span>
                     <h3 className="font-tight text-[17px] font-medium leading-[1.25] text-[color:var(--text-strong)] md:text-[18px]">

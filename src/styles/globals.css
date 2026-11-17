@@ -34,6 +34,8 @@
   --grad-from: #bc3cd8;
   --grad-to: #c44b8c;
   --tile-bg: #1c1c25;
+  --eyebrow-accent-grad: linear-gradient(135deg, #ffb066 0%, #ff8a2a 48%, #ff6a00 100%);
+  --eyebrow-accent-shimmer: linear-gradient(90deg, #ff9a45 0%, #ff7a1a 25%, #ffe2c6 50%, #ff7a1a 75%, #ff9a45 100%);
   color-scheme: dark;
 }
 
@@ -57,6 +59,8 @@ html[data-theme="light"] {
   --pill-text: #f5f8fd;
   --heading-collab: #424257;
   --tile-bg: #ffffff;
+  --eyebrow-accent-grad: linear-gradient(135deg, #e8590c 0%, #d9480f 52%, #c2410c 100%);
+  --eyebrow-accent-shimmer: linear-gradient(90deg, #e8590c 0%, #c2410c 25%, #f4b183 50%, #c2410c 75%, #e8590c 100%);
   color-scheme: light;
 }
 
@@ -103,6 +107,14 @@ body {
 
 .grad-text {
   background: linear-gradient(270deg, var(--grad-from) 0%, var(--grad-to) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+.section-eyebrow-accent {
+  background-image: var(--eyebrow-accent-grad);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -438,14 +450,7 @@ body {
 }
 
 .cert-label {
-  background: linear-gradient(
-    90deg,
-    var(--grad-from),
-    var(--grad-to),
-    var(--text-muted),
-    var(--grad-to),
-    var(--grad-from)
-  );
+  background: var(--eyebrow-accent-shimmer);
   background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;

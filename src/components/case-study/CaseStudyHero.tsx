@@ -29,7 +29,7 @@ export default function CaseStudyHero() {
         <div className="flex flex-col gap-6">
           <p
             data-reveal
-            className="text-[12px] font-medium uppercase tracking-[0.2em] text-[color:var(--heading-case-label)] md:text-[13px]"
+            className="section-eyebrow-accent text-[12px] font-medium uppercase tracking-[0.2em] text-[color:var(--heading-case-label)] md:text-[13px]"
           >
             Featured project
           </p>
@@ -71,7 +71,7 @@ export default function CaseStudyHero() {
               key={detail.label}
               className="flex flex-col gap-2 bg-[color:var(--bg)] p-5 md:p-6"
             >
-              <span className="text-[11px] font-medium uppercase tracking-[0.16em] text-[color:var(--heading-case-label)]">
+              <span className="section-eyebrow-accent text-[11px] font-medium uppercase tracking-[0.16em] text-[color:var(--heading-case-label)]">
                 {detail.label}
               </span>
               <span className="text-[15px] leading-[1.65] text-[color:var(--text)]">

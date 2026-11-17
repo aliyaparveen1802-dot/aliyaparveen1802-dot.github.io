@@ -34,7 +34,7 @@ export default function CaseStudyFlows() {
               {flow.steps.map((step, i) => (
                 <div key={step} className="flex shrink-0 items-center gap-3">
                   <span className="flex items-center gap-2.5 rounded-full border border-[color:var(--border-soft)] bg-[color:var(--bg)] px-4 py-2.5 text-[14px] font-medium text-[color:var(--text)] transition-colors duration-300 hover:border-[color:var(--grad-from)]">
-                    <span className="font-tight text-[11px] tracking-[0.14em] text-[color:var(--heading-case-label)]">
+                    <span className="section-eyebrow-accent font-tight text-[11px] tracking-[0.14em] text-[color:var(--heading-case-label)]">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     {step}

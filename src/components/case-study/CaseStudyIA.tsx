@@ -46,7 +46,7 @@ export default function CaseStudyIA() {
             className="flex h-full flex-col gap-4 rounded-[16px] border border-[color:var(--border-card)] bg-[color:var(--chip-bg)] p-5 transition-all duration-300 hover:border-[color:var(--border-soft)]"
           >
             <div className="flex items-center justify-between gap-2">
-              <span className="font-tight text-[12px] font-medium tracking-[0.16em] text-[color:var(--heading-case-label)]">
+              <span className="section-eyebrow-accent font-tight text-[12px] font-medium tracking-[0.16em] text-[color:var(--heading-case-label)]">
                 0{i + 1}
               </span>
               <span className="h-1.5 w-1.5 rounded-full bg-[color:var(--grad-from)]" />

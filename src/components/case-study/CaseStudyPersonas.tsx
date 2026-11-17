@@ -21,7 +21,7 @@ function PersonaList({
         : "text-[color:var(--text-muted)]";
   return (
     <div className="flex flex-col gap-3">
-      <h4 className="flex items-center gap-2 text-[12px] font-semibold uppercase tracking-[0.16em] text-[color:var(--heading-case-label)]">
+      <h4 className="section-eyebrow-accent flex items-center gap-2 text-[12px] font-semibold uppercase tracking-[0.16em] text-[color:var(--heading-case-label)]">
         <span className={color}>{icon}</span>
         {title}
       </h4>
@@ -68,7 +68,7 @@ export default function CaseStudyPersonas() {
                     {persona.name.charAt(0)}
                   </span>
                   <div className="flex flex-col gap-1">
-                    <span className="text-[11px] font-medium uppercase tracking-[0.18em] text-[color:var(--heading-case-label)]">
+                    <span className="section-eyebrow-accent text-[11px] font-medium uppercase tracking-[0.18em] text-[color:var(--heading-case-label)]">
                       {persona.tag}
                     </span>
                     <h3 className="font-tight text-[28px] font-medium leading-[1.2] text-[color:var(--text-strong)]">

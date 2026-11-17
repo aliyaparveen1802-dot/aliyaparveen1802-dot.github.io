@@ -143,7 +143,7 @@ export default function CaseStudyShowcase() {
           className="flex flex-wrap items-end justify-between gap-4"
         >
           <div className="flex flex-col gap-2">
-            <p className="text-[12px] font-medium uppercase tracking-[0.2em] text-[color:var(--heading-case-label)] md:text-[13px]">
+            <p className="section-eyebrow-accent text-[12px] font-medium uppercase tracking-[0.2em] text-[color:var(--heading-case-label)] md:text-[13px]">
               Mobile companion
             </p>
             <h3 className="font-tight text-[clamp(20px,2.4vw,30px)] font-medium leading-[1.3] text-[color:var(--text-strong)]">
@@ -167,7 +167,7 @@ export default function CaseStudyShowcase() {
                 alt={`SkyVoyage ${p.label} screen on mobile`}
                 caption={
                   <>
-                    <span className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[color:var(--heading-case-label)]">
+                    <span className="section-eyebrow-accent text-[12px] font-semibold uppercase tracking-[0.16em] text-[color:var(--heading-case-label)]">
                       {p.label}
                     </span>
                     <span className="text-[13px] leading-[1.7] text-[color:var(--text-dim)]">
@@ -200,7 +200,7 @@ export default function CaseStudyShowcase() {
               </span>
             )}
             <span className="flex min-w-0 flex-col gap-0.5">
-              <span className="text-[11px] font-medium uppercase tracking-[0.16em] text-[color:var(--heading-case-label)]">
+              <span className="section-eyebrow-accent text-[11px] font-medium uppercase tracking-[0.16em] text-[color:var(--heading-case-label)]">
                 {t.label}
               </span>
               <span className="truncate text-[13px] text-[color:var(--text-muted)]">

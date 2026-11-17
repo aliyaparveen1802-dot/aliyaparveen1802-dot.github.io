@@ -30,7 +30,7 @@ export function Section({
             {label && (
               <p
                 data-reveal
-                className="text-[12px] font-medium uppercase tracking-[0.2em] text-[color:var(--heading-case-label)] md:text-[13px]"
+                className="section-eyebrow-accent text-[12px] font-medium uppercase tracking-[0.2em] text-[color:var(--heading-case-label)] md:text-[13px]"
               >
                 {label}
               </p>

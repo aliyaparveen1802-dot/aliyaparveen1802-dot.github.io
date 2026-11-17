@@ -301,7 +301,7 @@ export default function MyDesignJourney() {
                     {stage.items.map((item) => (
                       <li
                         key={item}
-                        className="rounded-full border border-[color:var(--border-card)] px-3 py-1 text-[11.5px] font-medium text-[color:var(--text-dim)] transition-colors duration-500 group-hover:border-[color:var(--border-soft)]"
+                        className="section-eyebrow-accent rounded-full border border-[color:var(--border-card)] px-3 py-1 text-[11.5px] font-medium text-[color:var(--text-dim)] transition-colors duration-500 group-hover:border-[color:var(--border-soft)]"
                       >
                         {item}
                       </li>

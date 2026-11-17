@@ -243,7 +243,7 @@ export default function CertificationsSection() {
             {idfOrganization.shortName}
           </span>
           <div className="flex min-w-0 flex-col gap-2">
-            <span className="text-[11px] font-medium uppercase tracking-[0.2em] text-[color:var(--heading-case-label)]">
+            <span className="section-eyebrow-accent text-[11px] font-medium uppercase tracking-[0.2em] text-[color:var(--heading-case-label)]">
               01 — Organization
             </span>
             <h3 className="font-tight text-[clamp(19px,2.4vw,26px)] font-medium leading-[1.25] text-[color:var(--text-strong)]">
@@ -278,7 +278,7 @@ export default function CertificationsSection() {
                 <div className="flex flex-1 flex-col gap-3 px-1.5 pb-1.5">
                   <div className="flex items-center justify-between gap-3">
                     <span className="rounded-full border border-[color:var(--border-card)] bg-[color:var(--bg)] px-2.5 py-1 text-[10px] font-medium uppercase tracking-[0.16em] text-[color:var(--heading-case-label)]">
-                      {cert.index}
+                      <span className="section-eyebrow-accent">{cert.index}</span>
                     </span>
                     <span className="flex items-center gap-1.5 text-[12px] font-medium text-[color:var(--text-dim)]">
                       <Clock size={12} />
@@ -348,7 +348,7 @@ export default function CertificationsSection() {
               </span>
               <div className="relative flex flex-col gap-3">
                 <span className="inline-flex w-fit items-center gap-2 rounded-full border border-[color:var(--border-card)] bg-[color:var(--bg)] px-3 py-1 text-[11px] font-medium uppercase tracking-[0.18em] text-[color:var(--heading-case-label)]">
-                  02 — Education Milestone
+                  <span className="section-eyebrow-accent">02 — Education Milestone</span>
                 </span>
                 <img
                   src={schoolOfTechies.logo}
@@ -442,7 +442,7 @@ export default function CertificationsSection() {
               <CertificatePreview cert={active} full />
               <div className="flex flex-wrap items-end justify-between gap-3 px-1 pb-1">
                 <div className="flex min-w-0 flex-col gap-1">
-                  <span className="text-[11px] font-medium uppercase tracking-[0.18em] text-[color:var(--heading-case-label)]">
+                  <span className="section-eyebrow-accent text-[11px] font-medium uppercase tracking-[0.18em] text-[color:var(--heading-case-label)]">
                     {active.index} · {active.year}
                   </span>
                   <h4 className="font-tight text-[clamp(17px,2.2vw,23px)] font-medium leading-[1.3] text-[color:var(--text-strong)]">
