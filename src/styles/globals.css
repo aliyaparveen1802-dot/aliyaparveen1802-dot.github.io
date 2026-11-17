@@ -36,6 +36,12 @@
   --tile-bg: #1c1c25;
   --eyebrow-accent-grad: linear-gradient(135deg, #ffb066 0%, #ff8a2a 48%, #ff6a00 100%);
   --eyebrow-accent-shimmer: linear-gradient(90deg, #ff9a45 0%, #ff7a1a 25%, #ffe2c6 50%, #ff7a1a 75%, #ff9a45 100%);
+  --card-accent-1: 15%;
+  --card-accent-1b: 6%;
+  --card-accent-2: 9%;
+  --card-accent-h: 21%;
+  --card-accent-hb: 8%;
+  --card-accent-h2: 13%;
   color-scheme: dark;
 }
 
@@ -61,6 +67,12 @@ html[data-theme="light"] {
   --tile-bg: #ffffff;
   --eyebrow-accent-grad: linear-gradient(135deg, #e8590c 0%, #d9480f 52%, #c2410c 100%);
   --eyebrow-accent-shimmer: linear-gradient(90deg, #e8590c 0%, #c2410c 25%, #f4b183 50%, #c2410c 75%, #e8590c 100%);
+  --card-accent-1: 9%;
+  --card-accent-1b: 4%;
+  --card-accent-2: 6%;
+  --card-accent-h: 11%;
+  --card-accent-hb: 5%;
+  --card-accent-h2: 7%;
   color-scheme: light;
 }
 
@@ -363,17 +375,116 @@ body {
 /* ---------- Skills & Tools section ---------- */
 
 .glass-card {
+  --card-glow: 16% -20%;
+  --card-glow2: 106% 112%;
+  --card-angle: 148deg;
   position: relative;
+  isolation: isolate;
   border: 1px solid color-mix(in srgb, var(--border-card) 85%, transparent);
   background:
-    linear-gradient(
-      135deg,
-      color-mix(in srgb, var(--grad-from) 7%, transparent) 0%,
-      transparent 45%
+    radial-gradient(
+      110% 85% at var(--card-glow),
+      color-mix(in srgb, var(--grad-from) var(--card-accent-1), transparent) 0%,
+      color-mix(in srgb, var(--grad-from) var(--card-accent-1b), transparent) 42%,
+      transparent 72%
     ),
-    color-mix(in srgb, var(--chip-bg) 72%, transparent);
+    radial-gradient(
+      74% 64% at var(--card-glow2),
+      color-mix(in srgb, var(--grad-to) var(--card-accent-2), transparent) 0%,
+      transparent 62%
+    ),
+    linear-gradient(
+      var(--card-angle),
+      color-mix(
+        in srgb,
+        var(--grad-from) 8%,
+        color-mix(in srgb, var(--chip-bg) 82%, transparent)
+      ) 0%,
+      color-mix(in srgb, var(--chip-bg) 58%, transparent) 52%,
+      color-mix(
+        in srgb,
+        var(--grad-to) 6%,
+        color-mix(in srgb, var(--bg) 66%, transparent)
+      ) 100%
+    ),
+    color-mix(in srgb, var(--chip-bg) 74%, transparent);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
+}
+
+.glass-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.45s ease;
+  background:
+    radial-gradient(
+      110% 85% at var(--card-glow),
+      color-mix(in srgb, var(--grad-from) var(--card-accent-h), transparent) 0%,
+      color-mix(in srgb, var(--grad-from) var(--card-accent-hb), transparent) 45%,
+      transparent 74%
+    ),
+    radial-gradient(
+      74% 64% at var(--card-glow2),
+      color-mix(in srgb, var(--grad-to) var(--card-accent-h2), transparent) 0%,
+      transparent 64%
+    ),
+    linear-gradient(
+      var(--card-angle),
+      color-mix(in srgb, var(--grad-from) 5%, transparent) 0%,
+      transparent 55%
+    );
+}
+
+.glass-card:hover::before,
+.glass-card:focus-within::before {
+  opacity: 1;
+}
+
+/* Gentle per-card gradient variation */
+.skill-card:nth-child(1) {
+  --card-glow: 14% -18%;
+  --card-glow2: 106% 114%;
+  --card-angle: 146deg;
+}
+.skill-card:nth-child(2) {
+  --card-glow: 90% -24%;
+  --card-glow2: -8% 118%;
+  --card-angle: 170deg;
+}
+.skill-card:nth-child(3) {
+  --card-glow: -12% 34%;
+  --card-glow2: 108% 104%;
+  --card-angle: 130deg;
+}
+.skill-card:nth-child(4) {
+  --card-glow: 22% 118%;
+  --card-glow2: 104% -14%;
+  --card-angle: 158deg;
+}
+.skill-card:nth-child(5) {
+  --card-glow: 96% 48%;
+  --card-glow2: -8% -12%;
+  --card-angle: 140deg;
+}
+.skill-card:nth-child(6) {
+  --card-glow: 52% -28%;
+  --card-glow2: 112% 120%;
+  --card-angle: 176deg;
+}
+.cert-org {
+  --card-glow: 10% -34%;
+  --card-glow2: 110% 134%;
+  --card-angle: 140deg;
+}
+.cert-school {
+  --card-glow: 88% -26%;
+  --card-glow2: -12% 124%;
+  --card-angle: 166deg;
 }
 
 .skills-grid-bg {
