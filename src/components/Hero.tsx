@@ -1,17 +1,26 @@
-import { useEffect, useLayoutEffect, useRef } from "react";
+import { useLayoutEffect, useRef, useEffect } from "react";
 import gsap from "gsap";
-import { ArrowUpRight } from "lucide-react";
-import ToolsMarquee from "./ToolsMarquee";
-import { links } from "../data/content";
 import { usePrefersReducedMotion } from "../hooks/usePrefersReducedMotion";
 
 interface HeroProps {
   ready: boolean;
 }
 
-const WORDS = "I\u2019m a Designer Specialising in UX/UI and Interaction Design"
-  .split(" ")
-  .map((w) => ({ text: w, accent: w === "UX/UI" }));
+const LINES: { text: string; accent?: boolean }[][] = [
+  [
+    { text: "I\u2019m" },
+    { text: "a" },
+    { text: "Designer" },
+    { text: "Specialising" },
+    { text: "in" },
+  ],
+  [
+    { text: "UX/UI", accent: true },
+    { text: "and" },
+    { text: "Interaction" },
+    { text: "Design" },
+  ],
+];
 
 export default function Hero({ ready }: HeroProps) {
   const rootRef = useRef<HTMLElement>(null);
@@ -27,29 +36,16 @@ export default function Hero({ ready }: HeroProps) {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
       tl.fromTo(
-        ".hero-name",
-        { y: 40, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.8 },
+        ".hero-glows",
+        { opacity: 0 },
+        { opacity: 1, duration: 1.5, ease: "sine.out" },
         0
-      )
-        .fromTo(
-          ".hero-word",
-          { yPercent: 115, opacity: 0 },
-          { yPercent: 0, opacity: 1, duration: 0.9, stagger: 0.06 },
-          0.15
-        )
-        .fromTo(
-          ".hero-cta",
-          { y: 24, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.6 },
-          0.65
-        )
-        .fromTo(
-          ".hero-marquee",
-          { y: 30, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.7 },
-          0.8
-        );
+      ).fromTo(
+        ".hero-word",
+        { yPercent: 115, opacity: 0 },
+        { yPercent: 0, opacity: 1, duration: 0.95, stagger: 0.07 },
+        0.2
+      );
     }, rootRef);
 
     return () => ctx.revert();
@@ -59,7 +55,7 @@ export default function Hero({ ready }: HeroProps) {
     if (!ready || reduced) return;
     const ctx = gsap.context(() => {
       gsap.to(".hero-inner", {
-        yPercent: 6,
+        yPercent: 5,
         ease: "none",
         scrollTrigger: {
           trigger: rootRef.current,
@@ -76,55 +72,41 @@ export default function Hero({ ready }: HeroProps) {
     <section
       id="hero"
       ref={rootRef}
-      className="relative bg-[color:var(--bg)] px-5 pb-14 pt-[130px] md:px-8 md:pt-[200px] xl:px-[100px] xl:pt-[clamp(220px,31vh,292px)]"
+      className="relative overflow-hidden bg-[color:var(--bg)] px-5 pt-[clamp(150px,25vh,250px)] pb-[clamp(130px,22vh,230px)] md:px-8 xl:px-[100px]"
     >
-      <div className="hero-inner mx-auto flex w-full max-w-[1200px] flex-col items-start gap-10">
-        <div className="flex flex-col items-start gap-4">
-          <h3
-            className="hero-name grad-text font-tight text-[clamp(30px,4.5vw,55px)] font-semibold leading-[1.3]"
-            style={hidden ? { opacity: 0 } : undefined}
-          >
-            Aliya parveen!
-          </h3>
+      {/* Animated accent glow — bottom centre */}
+      <div
+        aria-hidden="true"
+        className="hero-glows pointer-events-none absolute inset-0 overflow-hidden"
+        style={hidden ? { opacity: 0 } : undefined}
+      >
+        <span className="hero-glow-haze absolute inset-0" />
+        <span className="hero-glow-a absolute bottom-[-42%] left-1/2 h-[85%] w-[min(1300px,160%)]" />
+        <span className="hero-glow-b absolute bottom-[-34%] left-1/2 h-[68%] w-[min(950px,120%)]" />
+      </div>
 
-          <h1 className="max-w-[1140px] font-tight text-[clamp(34px,6.2vw,88px)] font-medium leading-[1.2] tracking-[-0.005em]">
-            {WORDS.map((w, i) => (
-              <span key={`${w.text}-${i}`}>
-                <span className="inline-block overflow-hidden align-bottom">
-                  <span
-                    className={`hero-word inline-block ${
-                      w.accent
-                        ? "text-[color:var(--accent)]"
-                        : "text-[color:var(--text-strong)]"
-                    }`}
-                    style={hidden ? { opacity: 0 } : undefined}
-                  >
-                    {w.text}
+      <div className="hero-inner relative mx-auto flex w-full max-w-[1200px] flex-col items-center text-center">
+        <h1 className="font-tight text-[clamp(32px,5.9vw,80px)] font-bold leading-[1.06] tracking-[-0.03em] text-[color:var(--text-strong)]">
+          {LINES.map((line, li) => (
+            <span key={li} className="block">
+              {line.map((w, wi) => (
+                <span key={`${li}-${wi}`}>
+                  <span className="inline-block overflow-hidden align-bottom pb-[0.14em] -mb-[0.14em]">
+                    <span
+                      className={`hero-word inline-block ${
+                        w.accent ? "text-[color:var(--accent)]" : ""
+                      }`}
+                      style={hidden ? { opacity: 0 } : undefined}
+                    >
+                      {w.text}
+                    </span>
                   </span>
+                  {wi < line.length - 1 ? " " : null}
                 </span>
-                {i < WORDS.length - 1 ? " " : null}
-              </span>
-            ))}
-          </h1>
-        </div>
-
-        <a
-          href={links.behance}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hero-cta group inline-flex items-center gap-2 rounded-[24px] border-[1.5px] border-[color:var(--border-soft)] px-6 py-3 text-[14px] font-medium text-[color:var(--text)] transition-all duration-300 hover:border-[color:var(--grad-from)] hover:text-[color:var(--text-strong)]"
-          style={hidden ? { opacity: 0 } : undefined}
-        >
-          Visit Link
-          <ArrowUpRight
-            size={15}
-            className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-          />
-        </a>
-
-        <div className="hero-marquee mt-2 w-full" style={hidden ? { opacity: 0 } : undefined}>
-          <ToolsMarquee />
-        </div>
+              ))}
+            </span>
+          ))}
+        </h1>
       </div>
     </section>
   );
