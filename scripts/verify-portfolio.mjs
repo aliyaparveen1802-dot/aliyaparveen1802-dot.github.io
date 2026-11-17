@@ -107,9 +107,42 @@ async function rect(page, sel) {
   check("case study: h1 is SkyVoyage", h1 === "SkyVoyage", h1);
 
   const sections = await page.$$eval("section[id]", (els) => els.map((e) => e.id));
-  const required = ["top", "problem", "solution", "showcase", "personas", "journey", "mapping", "ia", "flows", "decisions", "final"];
+  const required = [
+    "top",
+    "problem",
+    "research",
+    "personas",
+    "empathy",
+    "journey",
+    "pains",
+    "mapping",
+    "solution",
+    "ia",
+    "flows",
+    "wireframing",
+    "lowfi",
+    "hifi",
+    "typography",
+    "decisions",
+    "prototyping",
+    "showcase",
+    "final",
+  ];
   const missing = required.filter((id) => !sections.includes(id));
-  check("case study: all 11 sections present", missing.length === 0, missing.length ? `missing: ${missing.join(",")}` : sections.join(","));
+  check("case study: all 19 sections present", missing.length === 0, missing.length ? `missing: ${missing.join(",")}` : sections.join(","));
+
+  const orderOk = await page.evaluate((ids) => {
+    let last = -1;
+    for (const id of ids) {
+      const el = document.getElementById(id);
+      if (!el) return false;
+      const top = el.getBoundingClientRect().top + window.scrollY;
+      if (top <= last) return false;
+      last = top;
+    }
+    return true;
+  }, required);
+  check("case study: 19 sections in required order", orderOk);
 
   const navText = await page.$eval("nav", (el) => el.textContent);
   check("case study nav: Back to Portfolio", navText.includes("Back to Portfolio"));
@@ -125,6 +158,20 @@ async function rect(page, sel) {
     )
   );
   check("case study: personas carry illustrative disclaimer", personaNote);
+
+  const researchNote = await page.evaluate(() =>
+    Array.from(document.querySelectorAll("p")).some((p) =>
+      p.textContent.includes("No interviews, participant sessions")
+    )
+  );
+  check("case study: research carries no-primary-research disclaimer", researchNote);
+
+  const empathyNote = await page.evaluate(() =>
+    Array.from(document.querySelectorAll("p")).some((p) =>
+      p.textContent.includes("not a record of observed research")
+    )
+  );
+  check("case study: empathy map carries illustrative disclaimer", empathyNote);
 
   await page.evaluate(() => window.scrollTo(0, 0));
   await flush(page);

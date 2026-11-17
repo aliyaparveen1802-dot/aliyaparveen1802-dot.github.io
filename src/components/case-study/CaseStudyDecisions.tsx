@@ -1,11 +1,11 @@
 import { designDecisions, skyvoyageImages } from "../../data/skyvoyage";
-import { Frame, Section } from "./ui";
+import { LaptopFrame, Section } from "./ui";
 
 export default function CaseStudyDecisions() {
   return (
     <Section
       id="decisions"
-      label="Section 10 — Design Decisions"
+      label="Section 16 — UI Design Decisions"
       title="Decisions that shaped the interface."
       intro="Every screen had to answer a traveller question quickly. These are the principles applied across the product."
       className="border-t border-[color:var(--border-card)]"
@@ -36,17 +36,17 @@ export default function CaseStudyDecisions() {
         data-reveal-stagger
         className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3"
       >
-        <Frame
+        <LaptopFrame
           src={skyvoyageImages.search}
           alt="SkyVoyage flight search form"
           caption="Search keeps trip type, route, dates, passengers and class in one scannable form."
         />
-        <Frame
+        <LaptopFrame
           src={skyvoyageImages.guideScroll}
           alt="SkyVoyage airport guide with terminal details"
           caption="Airport guide surfaces terminal, gate, counter and timing as large, readable facts."
         />
-        <Frame
+        <LaptopFrame
           src={skyvoyageImages.explorerScroll}
           alt="SkyVoyage airport explorer with facilities"
           caption="Facilities are grouped by category with walking distance, so waiting time becomes a choice."

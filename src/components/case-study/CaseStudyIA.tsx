@@ -5,7 +5,7 @@ export default function CaseStudyIA() {
   return (
     <Section
       id="ia"
-      label="Section 08 — Information Architecture"
+      label="Section 10 — Information Architecture"
       title="Five areas, one connected journey."
       intro="The product is organised around the moments that matter to a passenger. Each area owns one responsibility, and every area links back to the same journey."
       className="border-t border-[color:var(--border-card)]"

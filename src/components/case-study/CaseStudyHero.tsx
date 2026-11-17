@@ -1,6 +1,6 @@
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { projectDetails, skyvoyageImages, LIVE_PRODUCT_URL } from "../../data/skyvoyage";
-import { Frame, Tag } from "./ui";
+import { LaptopFrame, Tag } from "./ui";
 
 export default function CaseStudyHero() {
   return (
@@ -31,7 +31,7 @@ export default function CaseStudyHero() {
             data-reveal
             className="section-eyebrow-accent text-[12px] font-medium uppercase tracking-[0.2em] text-[color:var(--heading-case-label)] md:text-[13px]"
           >
-            Featured project
+            Section 01 — Project Overview
           </p>
           <h1
             data-reveal
@@ -81,7 +81,7 @@ export default function CaseStudyHero() {
           ))}
         </div>
 
-        <Frame
+        <LaptopFrame
           src={skyvoyageImages.hero}
           alt="SkyVoyage flight search home screen"
           caption="The SkyVoyage home experience — search flights, compare fares and start the journey from one place."

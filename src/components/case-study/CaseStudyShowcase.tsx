@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight, Type } from "lucide-react";
 import {
   designTokens,
-  phoneScreens,
+  showcaseLaptops,
   showcaseScreens,
   skyvoyageImages,
 } from "../../data/skyvoyage";
-import { Frame, PhoneFrame, Section, Tag } from "./ui";
+import { LaptopFrame, Section, Tag } from "./ui";
 
 export default function CaseStudyShowcase() {
   const [active, setActive] = useState(0);
@@ -27,7 +27,7 @@ export default function CaseStudyShowcase() {
   return (
     <Section
       id="showcase"
-      label="Section 04 — Interface Showcase"
+      label="Section 18 — Interface Showcase"
       title="Every screen, exactly as it ships."
       intro="No concepts and no placeholders — each mockup below is a real interface from the live product, presented in device frames with the same palette, type and spacing the product uses."
       className="border-t border-[color:var(--border-card)]"
@@ -38,7 +38,7 @@ export default function CaseStudyShowcase() {
         className="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_310px] xl:gap-12"
       >
         <div key={screen.id} className="cs-swap">
-          <Frame
+          <LaptopFrame
             src={image}
             alt={`SkyVoyage — ${screen.title}`}
             className="w-full"
@@ -136,7 +136,7 @@ export default function CaseStudyShowcase() {
         })}
       </div>
 
-      {/* Phone row */}
+      {/* Laptop row */}
       <div className="flex flex-col gap-8 md:gap-10">
         <div
           data-reveal
@@ -144,27 +144,27 @@ export default function CaseStudyShowcase() {
         >
           <div className="flex flex-col gap-2">
             <p className="section-eyebrow-accent text-[12px] font-medium uppercase tracking-[0.2em] text-[color:var(--heading-case-label)] md:text-[13px]">
-              Mobile companion
+              Desktop experience
             </p>
             <h3 className="font-tight text-[clamp(20px,2.4vw,30px)] font-medium leading-[1.3] text-[color:var(--text-strong)]">
-              The same journey, thumb-sized.
+              The same journey, at full size.
             </h3>
           </div>
-          <Tag>Responsive · 390 pt</Tag>
+          <Tag>Web · 1440 × 900</Tag>
         </div>
 
         <div
           data-reveal-stagger
-          className="grid grid-cols-2 gap-5 md:gap-8 xl:grid-cols-4"
+          className="cs-laptop-row grid grid-cols-2 gap-5 md:gap-8 xl:grid-cols-4"
         >
-          {phoneScreens.map((p, i) => (
+          {showcaseLaptops.map((p, i) => (
             <div key={p.id} className={i % 2 === 1 ? "xl:mt-12" : ""}>
-              <PhoneFrame
+              <LaptopFrame
                 reveal={false}
                 float
                 floatDelay={i * 0.9}
                 src={skyvoyageImages[p.image]}
-                alt={`SkyVoyage ${p.label} screen on mobile`}
+                alt={`SkyVoyage ${p.label} screen`}
                 caption={
                   <>
                     <span className="section-eyebrow-accent text-[12px] font-semibold uppercase tracking-[0.16em] text-[color:var(--heading-case-label)]">
@@ -215,9 +215,9 @@ export default function CaseStudyShowcase() {
         data-reveal
         className="max-w-[820px] text-[15px] leading-[1.8] text-[color:var(--text-dim)]"
       >
-        Every screen above is captured from the live build at its shipped sizes —
-        1440 × 900 on desktop and 390 × 844 on phone — so what you see here is
-        what travellers get.
+        Every screen above is captured from the live build at its shipped size —
+        1440 × 900 on desktop, with responsive layouts for smaller screens —
+        so what you see here is what travellers get.
       </p>
     </Section>
   );

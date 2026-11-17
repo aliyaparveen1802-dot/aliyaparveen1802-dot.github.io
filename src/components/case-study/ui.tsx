@@ -200,3 +200,65 @@ export function Tag({
     </span>
   );
 }
+
+export function LaptopFrame({
+  src,
+  alt,
+  caption,
+  className = "",
+  imgClassName = "",
+  parallax = false,
+  priority = false,
+  reveal = true,
+  float = false,
+  floatDelay = 0,
+}: {
+  src: string;
+  alt: string;
+  caption?: ReactNode;
+  className?: string;
+  imgClassName?: string;
+  parallax?: boolean;
+  priority?: boolean;
+  reveal?: boolean;
+  float?: boolean;
+  floatDelay?: number;
+}) {
+  return (
+    <figure
+      data-reveal={reveal ? true : undefined}
+      className={`group cs-laptop flex flex-col gap-3 ${className}`}
+    >
+      <div
+        className={`transition-all duration-500 ease-out group-hover:-translate-y-2 ${float ? "cs-float" : ""}`}
+        style={float ? { animationDelay: `${floatDelay}s` } : undefined}
+      >
+        <div className="rounded-t-[14px] border border-b-0 border-[#3a3a48]/70 bg-gradient-to-b from-[#26262f] via-[#15151c] to-[#0c0c12] p-[10px] pb-[12px] shadow-[0_44px_90px_-30px_rgba(0,0,0,0.85)]">
+          <div className="relative aspect-[16/10] w-full overflow-hidden rounded-[5px] bg-black">
+            <img
+              src={src}
+              alt={alt}
+              loading={priority ? "eager" : "lazy"}
+              decoding="async"
+              data-parallax={parallax ? "" : undefined}
+              className={`block w-full object-cover object-top ${
+                parallax ? "h-[112%]" : "h-full"
+              } ${imgClassName}`}
+            />
+          </div>
+        </div>
+        <div className="relative mx-[-1.5%] h-[13px] w-[103%] rounded-b-[10px] bg-gradient-to-b from-[#2a2a34] via-[#1a1a22] to-[#0c0c12] shadow-[0_18px_30px_-14px_rgba(0,0,0,0.8)]">
+          <span
+            aria-hidden="true"
+            className="absolute left-1/2 top-0 h-[5px] w-[16%] -translate-x-1/2 rounded-b-[6px] bg-[#0a0a0f]"
+          />
+        </div>
+      </div>
+      {caption && (
+        <figcaption className="flex flex-col gap-1.5 text-[13px] leading-[1.7] text-[color:var(--text-dim)]">
+          {caption}
+        </figcaption>
+      )}
+    </figure>
+  );
+}

@@ -3,14 +3,24 @@ import { useScrollReveal } from "../../hooks/useScrollReveal";
 import { scrollToPosition } from "../../hooks/useSmoothScroll";
 import CaseStudyHero from "./CaseStudyHero";
 import CaseStudyProblem from "./CaseStudyProblem";
-import CaseStudySolution from "./CaseStudySolution";
-import CaseStudyShowcase from "./CaseStudyShowcase";
+import CaseStudyResearch from "./CaseStudyResearch";
 import CaseStudyPersonas from "./CaseStudyPersonas";
+import CaseStudyEmpathy from "./CaseStudyEmpathy";
 import CaseStudyJourney from "./CaseStudyJourney";
+import CaseStudyPainPoints from "./CaseStudyPainPoints";
 import CaseStudyMapping from "./CaseStudyMapping";
+import CaseStudySolution from "./CaseStudySolution";
 import CaseStudyIA from "./CaseStudyIA";
 import CaseStudyFlows from "./CaseStudyFlows";
+import {
+  CaseStudyWireframing,
+  CaseStudyLowFi,
+  CaseStudyHiFi,
+} from "./CaseStudyWireframing";
+import CaseStudyTypography from "./CaseStudyTypography";
 import CaseStudyDecisions from "./CaseStudyDecisions";
+import CaseStudyPrototyping from "./CaseStudyPrototyping";
+import CaseStudyShowcase from "./CaseStudyShowcase";
 import CaseStudyFinal from "./CaseStudyFinal";
 
 const DEFAULT_TITLE = "Aliya Parveen — UX/UI Designer";
@@ -31,14 +41,22 @@ export default function SkyVoyageCaseStudy() {
     <div ref={rootRef} className="bg-[color:var(--bg)]">
       <CaseStudyHero />
       <CaseStudyProblem />
-      <CaseStudySolution />
-      <CaseStudyShowcase />
+      <CaseStudyResearch />
       <CaseStudyPersonas />
+      <CaseStudyEmpathy />
       <CaseStudyJourney />
+      <CaseStudyPainPoints />
       <CaseStudyMapping />
+      <CaseStudySolution />
       <CaseStudyIA />
       <CaseStudyFlows />
+      <CaseStudyWireframing />
+      <CaseStudyLowFi />
+      <CaseStudyHiFi />
+      <CaseStudyTypography />
       <CaseStudyDecisions />
+      <CaseStudyPrototyping />
+      <CaseStudyShowcase />
       <CaseStudyFinal />
     </div>
   );

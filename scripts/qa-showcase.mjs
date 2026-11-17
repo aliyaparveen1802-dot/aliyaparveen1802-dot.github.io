@@ -72,24 +72,54 @@ const selectedThumb = (page) =>
   await openCase(page);
 
   const order = await page.evaluate(() => {
-    const f = (s) => {
-      const el = document.querySelector(s);
-      if (!el) return null;
-      const r = el.getBoundingClientRect();
-      return r.top + scrollY;
-    };
-    return { solution: f("#solution"), showcase: f("#showcase"), personas: f("#personas") };
+    const ids = [
+      "top",
+      "problem",
+      "research",
+      "personas",
+      "empathy",
+      "journey",
+      "pains",
+      "mapping",
+      "solution",
+      "ia",
+      "flows",
+      "wireframing",
+      "lowfi",
+      "hifi",
+      "typography",
+      "decisions",
+      "prototyping",
+      "showcase",
+      "final",
+    ];
+    const tops = [];
+    let ok = true;
+    let last = -1;
+    for (const id of ids) {
+      const el = document.getElementById(id);
+      if (!el) {
+        ok = false;
+        tops.push(null);
+        continue;
+      }
+      const top = Math.round(el.getBoundingClientRect().top + scrollY);
+      tops.push(top);
+      if (top <= last) ok = false;
+      last = top;
+    }
+    return { ok, tops };
   });
   check(
-    "desktop: SHOWCASE sits between SOLUTION and PERSONAS",
-    order.solution < order.showcase && order.showcase < order.personas,
-    JSON.stringify(order)
+    "desktop: 19 sections present in required order",
+    order.ok,
+    JSON.stringify(order.tops)
   );
 
   const label = await page.$eval("#showcase p", (el) => el.textContent.trim());
   check(
-    "desktop: label Section 04 — Interface Showcase",
-    label.includes("Section 04") && label.includes("Interface Showcase"),
+    "desktop: label Section 18 — Interface Showcase",
+    label.includes("Section 18") && label.includes("Interface Showcase"),
     label
   );
 
@@ -97,8 +127,8 @@ const selectedThumb = (page) =>
     personas: document.querySelector("#personas p")?.textContent || "",
     final: document.querySelector("#final p")?.textContent || "",
   }));
-  check("labels renumbered: personas = 05", renumber.personas.includes("Section 05"), renumber.personas);
-  check("labels renumbered: final = 11", renumber.final.includes("Section 11"), renumber.final);
+  check("labels renumbered: personas = 04", renumber.personas.includes("Section 04"), renumber.personas);
+  check("labels renumbered: final = 19", renumber.final.includes("Section 19"), renumber.final);
 
   const head = await page.$eval("#showcase h2", (el) => el.textContent.trim());
   check("desktop: heading copy", head === "Every screen, exactly as it ships.", head);
@@ -143,44 +173,49 @@ const selectedThumb = (page) =>
   await sleep(750);
   check("desktop: prev wraps to last screen (trip)", (await stageSrc(page)).includes("sv-trips"), await stageSrc(page));
 
-  // ---------- 3. Phone frames ----------
-  const phones = await page.$$eval("#showcase figure.group img", (els) =>
+  // ---------- 3. Laptop frames ----------
+  const laptops = await page.$$eval("#showcase .cs-laptop-row figure.cs-laptop img", (els) =>
     els.map((e) => e.getAttribute("src"))
   );
-  const expectPhones = ["sv-home-mobile", "sv-guide-mobile", "sv-map-mobile", "sv-tracking-mobile"];
-  const phonesOk = expectPhones.every((n, i) => (phones[i] || "").includes(n));
-  check("desktop: 4 phone-frame screens", phones.length === 4 && phonesOk, JSON.stringify(phones));
+  const expectLaptops = ["sv-home.png", "sv-guide.png", "sv-map.png", "sv-tracking.png"];
+  const laptopsOk = expectLaptops.every((n, i) => (laptops[i] || "").includes(n));
+  check("desktop: 4 laptop-frame screens", laptops.length === 4 && laptopsOk, JSON.stringify(laptops));
 
-  const chrome = await page.$eval("#showcase figure.group", (el) => ({
-    time: el.textContent.includes("9:41"),
-    island: !!el.querySelector('span[aria-hidden="true"].rounded-full.bg-black'),
-    home: !!el.querySelector('span.bg-white\\/60') || !!el.querySelector("div.flex.justify-center span"),
+  const chrome = await page.$eval("#showcase .cs-laptop-row figure.cs-laptop", (el) => ({
+    lid: !!el.querySelector('div[class*="rounded-t-[14px]"]'),
+    screen: !!el.querySelector('div[class*="aspect-[16/10]"]'),
+    deck: !!el.querySelector('div[class*="h-[13px]"]'),
+    notch: !!el.querySelector('span[class*="rounded-b-[6px]"]'),
   }));
-  check("desktop: phone status bar + island + home indicator", chrome.time && chrome.island && chrome.home, JSON.stringify(chrome));
+  check(
+    "desktop: laptop lid + 16:10 screen + deck notch",
+    chrome.lid && chrome.screen && chrome.deck && chrome.notch,
+    JSON.stringify(chrome)
+  );
 
-  const offsets = await page.$$eval("#showcase figure.group", (els) =>
+  const offsets = await page.$$eval("#showcase .cs-laptop-row figure.cs-laptop", (els) =>
     els.map((e) => Math.round(e.getBoundingClientRect().top + scrollY))
   );
   check(
-    "desktop: phone row staggered (alternating offsets)",
+    "desktop: laptop row staggered (alternating offsets)",
     Math.abs(offsets[1] - offsets[0]) > 30 && Math.abs(offsets[0] - offsets[2]) < 5,
     JSON.stringify(offsets)
   );
 
-  // hover lift on phone
-  await page.$eval("#showcase figure.group", (el) =>
+  // hover lift on laptop
+  await page.$eval("#showcase .cs-laptop-row figure.cs-laptop", (el) =>
     el.scrollIntoView({ block: "center" })
   );
   await sleep(1200);
-  const fig = await page.$("#showcase figure.group");
+  const fig = await page.$("#showcase .cs-laptop-row figure.cs-laptop");
   const box = await fig.boundingBox();
   const shellY = () =>
-    page.$eval("#showcase figure.group > div", (el) => Math.round(el.getBoundingClientRect().top));
+    page.$eval("#showcase .cs-laptop-row figure.cs-laptop > div", (el) => Math.round(el.getBoundingClientRect().top));
   const before = await shellY();
   await page.mouse.move(box.x + box.width / 2, box.y + 60);
   await sleep(700);
   const after = await shellY();
-  check("desktop: phone hover lifts frame", after < before - 4, `y ${before} → ${after}`);
+  check("desktop: laptop hover lifts frame", after < before - 4, `y ${before} → ${after}`);
 
   // design tokens
   const tokens = await page.$$eval("#showcase .md\\:grid-cols-4 > div", (els) =>
@@ -216,10 +251,12 @@ const selectedThumb = (page) =>
   await sleep(800);
   await page.screenshot({ path: `${OUT}/showcase-desktop-switched.png` });
   await page.evaluate(() =>
-    document.querySelector("#showcase figure.group").scrollIntoView({ block: "center" })
+    document
+      .querySelector("#showcase .cs-laptop-row figure.cs-laptop")
+      .scrollIntoView({ block: "center" })
   );
   await sleep(1200);
-  await page.screenshot({ path: `${OUT}/showcase-phones.png` });
+  await page.screenshot({ path: `${OUT}/showcase-laptops.png` });
   await page.close();
 }
 
@@ -236,11 +273,11 @@ const selectedThumb = (page) =>
   }));
   check("mobile: thumb strip scrollable with 8 tabs", strip.scrollable && strip.count === 8, JSON.stringify(strip));
 
-  const tops = await page.$$eval("#showcase figure.group", (els) =>
+  const tops = await page.$$eval("#showcase .cs-laptop-row figure.cs-laptop", (els) =>
     els.map((e) => Math.round(e.getBoundingClientRect().top))
   );
   check(
-    "mobile: phone grid stacks 2×2",
+    "mobile: laptop grid stacks 2×2",
     tops.length === 4 && tops[0] === tops[1] && tops[2] === tops[3] && tops[2] > tops[0],
     JSON.stringify(tops)
   );
@@ -273,7 +310,7 @@ const selectedThumb = (page) =>
   await sleep(300);
   check("reduced: screen switching still works", (await stageSrc(page)).includes("sv-tracking"), await stageSrc(page));
 
-  const floatAnim = await page.$eval("#showcase figure.group > div", (el) => {
+  const floatAnim = await page.$eval("#showcase .cs-laptop-row figure.cs-laptop > div", (el) => {
     const d = getComputedStyle(el).animationDuration;
     return d.endsWith("ms") ? parseFloat(d) : parseFloat(d) * 1000;
   });

@@ -1,11 +1,11 @@
 import { features, skyvoyageImages } from "../../data/skyvoyage";
-import { Frame, Section, Tag } from "./ui";
+import { LaptopFrame, Section, Tag } from "./ui";
 
 export default function CaseStudySolution() {
   return (
     <Section
       id="solution"
-      label="Section 03 — The Solution"
+      label="Section 09 — The Solution"
       title="One Journey. One Platform. Less Stress."
       intro="SkyVoyage connects the moments that usually live in separate apps — booking, airport guidance, waiting time, navigation and flight status — into one continuous passenger journey."
       className="border-t border-[color:var(--border-card)]"
@@ -57,11 +57,10 @@ export default function CaseStudySolution() {
               </div>
 
               {image && (
-                <Frame
+                <LaptopFrame
                   src={image}
                   alt={`${feature.title} in the SkyVoyage product`}
                   className={flipped ? "lg:order-1" : ""}
-                  imgClassName="max-h-[440px]"
                 />
               )}
             </article>

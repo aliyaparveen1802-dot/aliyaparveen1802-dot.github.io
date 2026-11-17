@@ -492,3 +492,194 @@ export const finalHighlights = [
   "Flight tracking with boarding information",
   "Centralised journey and ticket details",
 ];
+
+export const researchQuestions = [
+  {
+    question: "Where does the travel journey fragment across apps?",
+    direction:
+      "One connected platform from search to boarding, so context is never lost between steps.",
+  },
+  {
+    question: "What breaks down after the traveller reaches the airport?",
+    direction:
+      "An airport guide that answers terminal, counter and gate questions in one view.",
+  },
+  {
+    question: "How is airport waiting time experienced?",
+    direction:
+      "Waiting-time activities grouped by category with walking distance, so time becomes a choice.",
+  },
+  {
+    question: "Where does flight-status anxiety come from?",
+    direction:
+      "Live tracking with gate and boarding updates together in a single view.",
+  },
+];
+
+export const empathyMap = {
+  thinks: [
+    "Which route and fare work best for me?",
+    "Do I have everything I need for departure?",
+    "Where do I go from the entrance?",
+    "Which way is my gate from here?",
+    "I know exactly where to be and when.",
+  ],
+  feels: ["Curious", "Cautious", "Relieved", "Anxious", "Interested", "Confident"],
+  says: [
+    "I don't know what to do while waiting at the airport.",
+    "I cannot find the correct gate.",
+    "I am worried about missing my flight.",
+    "My travel information is spread across multiple platforms.",
+    "I am unfamiliar with the airport.",
+  ],
+  does: [
+    "Explores flight options and travel requirements.",
+    "Chooses a flight and completes the booking.",
+    "Accesses ticket and journey information.",
+    "Discovers services, dining and activities while waiting.",
+    "Uses the airport map to reach the terminal, facility or gate.",
+    "Checks flight information, gate details and boarding instructions.",
+  ],
+};
+
+export const painThemes = [
+  {
+    title: "Before travel",
+    intro: "Planning and booking keep context scattered.",
+    items: [
+      { text: "Options are spread across too many sites.", source: "Journey" },
+      { text: "Hidden steps create doubt before payment.", source: "Journey" },
+      { text: "Tickets and timings live in different places.", source: "Journey" },
+      {
+        text: "Switching between multiple travel applications.",
+        source: "Ananya & Arjun",
+      },
+      {
+        text: "Changes in flight and gate information.",
+        source: "Arjun",
+      },
+    ],
+  },
+  {
+    title: "At the airport",
+    intro: "Wayfinding and waiting time create uncertainty.",
+    items: [
+      { text: "Airport terminals are unfamiliar and busy.", source: "Journey" },
+      { text: "No idea what facilities are nearby.", source: "Journey" },
+      { text: "Signage alone is easy to misread.", source: "Journey" },
+      { text: "Unfamiliar with airport layouts.", source: "Ananya" },
+      { text: "Difficulty finding airport facilities.", source: "Ananya" },
+      { text: "Difficulty navigating unfamiliar airports.", source: "Arjun" },
+    ],
+  },
+  {
+    title: "Under time pressure",
+    intro: "Status changes turn into anxiety.",
+    items: [
+      { text: "Late gate or time changes cause panic.", source: "Journey" },
+      { text: "Nervous about missing the flight.", source: "Ananya" },
+      { text: "Limited time between activities.", source: "Arjun" },
+      { text: "Unsure about boarding procedures.", source: "Ananya" },
+    ],
+  },
+];
+
+export const prototypeMoments = [
+  {
+    stage: "01 · Welcome",
+    title: "Onboarding & first run",
+    note: "A five-step onboarding introduces search, the airport guide, tracking and journey tools — with a skip path for returning users.",
+  },
+  {
+    stage: "03 · Discover",
+    title: "Single-form flight search",
+    note: "One-way, round-trip and multi-city switch without leaving the screen, so the traveller never restarts the task.",
+  },
+  {
+    stage: "04 · Compare",
+    title: "Results & fare comparison",
+    note: "Filters and a price calendar keep comparable fares, times and airlines on one screen instead of ten tabs.",
+  },
+  {
+    stage: "07 · Board",
+    title: "Live flight tracking",
+    note: "Status, terminal, gate and boarding time update together, wired to the same journey data as the map and guide.",
+  },
+];
+
+export const showcaseLaptops = [
+  {
+    id: "home",
+    label: "Home",
+    caption: "Search form and trip shortcuts on the traveller dashboard.",
+    image: "hero" as const,
+  },
+  {
+    id: "guide",
+    label: "Airport Guide",
+    caption: "Terminal, check-in and gate details as large, readable facts.",
+    image: "guide" as const,
+  },
+  {
+    id: "map",
+    label: "Indoor Map",
+    caption: "Facility pins and walking routes across the airport layout.",
+    image: "explorer" as const,
+  },
+  {
+    id: "tracking",
+    label: "Flight Tracking",
+    caption: "Gate and boarding updates in one calm view.",
+    image: "tracking" as const,
+  },
+];
+
+export const typeSpecimen = [
+  {
+    role: "Display",
+    sample: "SkyVoyage",
+    note: "Inter Tight · semibold · tight tracking",
+  },
+  {
+    role: "Heading",
+    sample: "Travel with confidence",
+    note: "Inter · medium · 1.3 line height",
+  },
+  {
+    role: "Body",
+    sample: "Terminal, gate and boarding details in one place.",
+    note: "Inter · regular · generous line height",
+  },
+  {
+    role: "Caption",
+    sample: "DEMO DATA · UPDATED 2 MIN AGO",
+    note: "Inter · medium · uppercase tracking",
+  },
+];
+
+export const paletteRoles = [
+  {
+    label: "Accent",
+    value: "Acid lime · #E6FF19",
+    color: "#E6FF19",
+    role: "Status highlights, active states and key actions against the dark surface.",
+  },
+  {
+    label: "Surface",
+    value: "Deep navy · #07131C",
+    color: "#07131C",
+    role: "Base canvas — chosen to stay comfortable in dim airport environments.",
+  },
+  {
+    label: "Card",
+    value: "Slate card · #101D25",
+    color: "#101D25",
+    role: "Elevated panels that separate information without heavy borders.",
+  },
+  {
+    label: "Typography",
+    value: "Inter · tight geometric sans",
+    color: null,
+    role: "One family across the product for consistent, legible reading on the move.",
+  },
+];
