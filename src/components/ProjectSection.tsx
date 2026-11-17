@@ -98,7 +98,7 @@ export default function ProjectSection() {
     <section
       id="project"
       ref={rootRef}
-      className="flex flex-col items-center bg-[color:var(--bg)] px-5 py-20 md:px-8 md:py-24 xl:px-[100px] xl:py-28"
+      className="flex flex-col items-center px-5 py-20 md:px-8 md:py-24 xl:px-[100px] xl:py-28"
       style={{ scrollMarginTop: "30px" }}
     >
       <div className="flex w-full max-w-[1200px] flex-col gap-10">

@@ -32,7 +32,16 @@ export default function App() {
   }, [reduced]);
 
   return (
-    <div className="relative min-h-screen bg-[color:var(--bg)]">
+    <div className="relative min-h-screen">
+      {/* Page-wide ambient accent glow */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none fixed inset-0 -z-10 overflow-hidden"
+      >
+        <span className="page-glow-haze absolute inset-0" />
+        <span className="page-glow-a absolute bottom-[-42%] left-1/2 h-[85%] w-[min(1300px,160%)]" />
+        <span className="page-glow-b absolute bottom-[-34%] left-1/2 h-[68%] w-[min(950px,120%)]" />
+      </div>
       {!loaded && !reduced && <Preloader onDone={handlePreloaderDone} />}
       <Navbar
         theme={theme}

@@ -341,7 +341,7 @@ const flush = (page) =>
     const sec = document.querySelector("#case-studies");
     const h2 = sec.querySelector("h2");
     return {
-      bg: getComputedStyle(sec).backgroundColor,
+      bg: getComputedStyle(document.body).backgroundColor,
       heading: getComputedStyle(h2).color,
     };
   });

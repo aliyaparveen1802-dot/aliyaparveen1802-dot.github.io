@@ -186,7 +186,7 @@ export default function ProjectGallery() {
     <section
       id="case-studies"
       ref={rootRef}
-      className="flex flex-col items-center gap-10 overflow-hidden bg-[color:var(--bg)] py-20 md:gap-12 md:py-24 xl:py-28"
+      className="flex flex-col items-center gap-10 overflow-hidden py-20 md:gap-12 md:py-24 xl:py-28"
       style={{ scrollMarginTop: "30px" }}
     >
       <div className="flex w-full max-w-[1400px] flex-col items-center gap-5 px-5 text-center md:px-8">

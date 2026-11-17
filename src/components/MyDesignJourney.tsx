@@ -204,7 +204,7 @@ export default function MyDesignJourney() {
     <section
       id="design-journey"
       ref={rootRef}
-      className="relative flex flex-col items-center overflow-hidden bg-[color:var(--bg)] px-5 py-20 md:px-8 md:py-24 xl:px-[100px] xl:py-28"
+      className="relative flex flex-col items-center overflow-hidden px-5 py-20 md:px-8 md:py-24 xl:px-[100px] xl:py-28"
       style={{ scrollMarginTop: "30px" }}
     >
       <div aria-hidden="true" className="jd-dots pointer-events-none absolute inset-0" />

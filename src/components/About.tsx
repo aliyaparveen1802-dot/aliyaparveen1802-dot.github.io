@@ -107,7 +107,7 @@ export default function About() {
     <section
       id="about"
       ref={rootRef}
-      className="bg-[color:var(--bg)] px-5 py-16 md:px-8 md:py-20 xl:px-8 xl:py-[74px]"
+      className="px-5 py-16 md:px-8 md:py-20 xl:px-8 xl:py-[74px]"
       style={{ scrollMarginTop: "72px" }}
     >
       <div className="mx-auto flex w-full max-w-[1184px] flex-col">

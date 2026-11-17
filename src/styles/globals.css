@@ -549,9 +549,9 @@ body {
   animation: skills-float 6s ease-in-out infinite;
 }
 
-/* ---------- Hero section ---------- */
+/* ---------- Page-wide ambient glow ---------- */
 
-.hero-glow-haze {
+.page-glow-haze {
   background: radial-gradient(
     ellipse 130% 95% at 50% 118%,
     color-mix(in srgb, var(--accent) 14%, transparent) 0%,
@@ -560,7 +560,7 @@ body {
   );
 }
 
-.hero-glow-a {
+.page-glow-a {
   transform: translate(-50%, 0);
   background: radial-gradient(
     ellipse at center,
@@ -568,10 +568,10 @@ body {
     color-mix(in srgb, var(--accent) 17%, transparent) 40%,
     transparent 71%
   );
-  animation: hero-glow-a 11s ease-in-out infinite;
+  animation: page-glow-a 11s ease-in-out infinite;
 }
 
-@keyframes hero-glow-a {
+@keyframes page-glow-a {
   0%,
   100% {
     transform: translate(-50%, 0) scale(1);
@@ -583,7 +583,7 @@ body {
   }
 }
 
-.hero-glow-b {
+.page-glow-b {
   transform: translate(-50%, 0);
   background: radial-gradient(
     ellipse at center,
@@ -591,10 +591,10 @@ body {
     color-mix(in srgb, var(--accent) 8%, transparent) 42%,
     transparent 66%
   );
-  animation: hero-glow-b 14s ease-in-out infinite;
+  animation: page-glow-b 14s ease-in-out infinite;
 }
 
-@keyframes hero-glow-b {
+@keyframes page-glow-b {
   0%,
   100% {
     transform: translate(-50%, 2%) scale(1.05);
@@ -607,8 +607,8 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-glow-a,
-  .hero-glow-b {
+  .page-glow-a,
+  .page-glow-b {
     animation: none;
   }
 }

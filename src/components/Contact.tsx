@@ -130,7 +130,7 @@ export default function Contact() {
     <section
       id="contact"
       ref={rootRef}
-      className="bg-[color:var(--bg)] px-5 pb-16 pt-16 md:px-8 md:pb-20 md:pt-20 xl:px-12 xl:pt-[70px]"
+      className="px-5 pb-16 pt-16 md:px-8 md:pb-20 md:pt-20 xl:px-12 xl:pt-[70px]"
       style={{ scrollMarginTop: "72px" }}
     >
       <div className="flex flex-col gap-14">
