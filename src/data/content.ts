@@ -94,7 +94,8 @@ export const links = {
 };
 
 export const nav = [
-  { label: "Case Studies", href: "#case-studies" },
+  { label: "Home", href: "#hero" },
+  { label: "Projects", href: "#project" },
   { label: "About", href: "#about" },
   { label: "Contact", href: "#contact" },
 ];
