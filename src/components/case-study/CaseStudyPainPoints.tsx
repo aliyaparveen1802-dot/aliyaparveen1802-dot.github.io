@@ -29,7 +29,7 @@ export default function CaseStudyPainPoints() {
                   0{i + 1}
                 </span>
               </div>
-              <h3 className="font-tight text-[20px] font-medium leading-[1.35] text-[color:var(--text-strong)]">
+              <h3 className="font-tight text-[20px] font-semibold leading-[1.35] text-[color:var(--text-strong)]">
                 {theme.title}
               </h3>
               <p className="text-[14.5px] leading-[1.7] text-[color:var(--text-muted)]">

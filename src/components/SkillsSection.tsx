@@ -100,7 +100,7 @@ export default function SkillsSection() {
             Key Skills &amp; Tools · 01 — 06
             <span className="h-px w-8 bg-[linear-gradient(270deg,transparent,var(--grad-from))]" />
           </span>
-          <h2 className="font-tight text-[clamp(32px,4.6vw,56px)] font-medium leading-[1.1] tracking-[-0.01em] text-[color:var(--heading-case)]">
+          <h2 className="font-tight text-[clamp(32px,4.6vw,56px)] font-semibold leading-[1.1] tracking-[-0.01em] text-[color:var(--heading-case)]">
             My Design Toolkit<span className="grad-text">.</span>
           </h2>
           <p className="max-w-[620px] text-[16px] leading-[1.8] text-[color:var(--text-muted)] md:text-[17px]">
@@ -126,7 +126,7 @@ export default function SkillsSection() {
                     <span className="section-eyebrow-accent text-[11px] font-medium uppercase tracking-[0.18em] text-[color:var(--heading-case-label)]">
                       {cat.index}
                     </span>
-                    <h3 className="font-tight text-[17px] font-medium leading-[1.25] text-[color:var(--text-strong)] md:text-[18px]">
+                    <h3 className="font-tight text-[17px] font-semibold leading-[1.25] text-[color:var(--text-strong)] md:text-[18px]">
                       {cat.title}
                     </h3>
                   </div>

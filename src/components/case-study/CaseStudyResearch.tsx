@@ -28,7 +28,7 @@ export default function CaseStudyResearch() {
                 Q{i + 1}
               </span>
             </div>
-            <h3 className="font-tight text-[19px] font-medium leading-[1.4] text-[color:var(--text)]">
+            <h3 className="font-tight text-[19px] font-semibold leading-[1.4] text-[color:var(--text)]">
               {item.question}
             </h3>
             <div className="mt-auto flex gap-3 border-t border-[color:var(--border-card)] pt-4">

@@ -87,7 +87,7 @@ export default function Hero({ ready }: HeroProps) {
             Aliya parveen!
           </h3>
 
-          <h1 className="max-w-[1140px] font-tight text-[clamp(34px,6.2vw,88px)] font-medium leading-[1.2] tracking-[-0.005em]">
+          <h1 className="max-w-[1140px] font-tight text-[clamp(34px,6.2vw,88px)] font-semibold leading-[1.2] tracking-[-0.005em]">
             {WORDS.map((w, i) => (
               <span key={`${w.text}-${i}`}>
                 <span className="inline-block overflow-hidden align-bottom">

@@ -51,7 +51,7 @@ export default function CaseStudyIA() {
               </span>
               <span className="h-1.5 w-1.5 rounded-full bg-[color:var(--grad-from)]" />
             </div>
-            <h3 className="font-tight text-[19px] font-medium leading-[1.35] text-[color:var(--text-strong)]">
+            <h3 className="font-tight text-[19px] font-semibold leading-[1.35] text-[color:var(--text-strong)]">
               {node.area}
             </h3>
             <ul className="flex flex-col gap-2">

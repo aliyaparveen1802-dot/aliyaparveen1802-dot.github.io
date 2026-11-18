@@ -28,7 +28,7 @@ export default function CaseStudyPrototyping() {
                 <MousePointerClick size={16} strokeWidth={1.7} />
               </span>
             </div>
-            <h3 className="font-tight text-[19px] font-medium leading-[1.4] text-[color:var(--text-strong)]">
+            <h3 className="font-tight text-[19px] font-semibold leading-[1.4] text-[color:var(--text-strong)]">
               {moment.title}
             </h3>
             <p className="text-[15px] leading-[1.75] text-[color:var(--text-muted)]">

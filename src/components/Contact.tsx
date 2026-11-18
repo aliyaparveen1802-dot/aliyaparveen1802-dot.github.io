@@ -43,7 +43,7 @@ const socialChips: Chip[] = [
 function ChipList({ title, items }: { title: string; items: Chip[] }) {
   return (
     <div className="flex flex-col gap-3">
-      <h3 className="text-[18px] font-medium leading-[1.4] text-[#e6e6e6]">{title}</h3>
+          <h3 className="text-[18px] font-semibold leading-[1.4] text-[#ffffff]">{title}</h3>
       <ul className="flex flex-col gap-[8px]">
         {items.map((item) => (
           <li key={item.label}>
@@ -137,7 +137,7 @@ export default function Contact() {
         <div className="flex flex-col gap-6">
           <div className="flex items-start gap-8 xl:pl-[100px]">
             <div className="flex flex-col gap-5">
-              <h1 className="font-tight text-[clamp(44px,6.2vw,88px)] font-medium leading-[1.2] text-[color:var(--heading-collab)]">
+              <h1 className="font-tight text-[clamp(44px,6.2vw,88px)] font-semibold leading-[1.2] text-[color:var(--heading-collab)]">
                 <span className="block overflow-hidden">
                   <span className="contact-line block">Let&rsquo;s</span>
                 </span>

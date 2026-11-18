@@ -2,7 +2,9 @@
 
 @theme {
   --font-inter: "Inter", sans-serif;
-  --font-tight: "Inter Tight", "Inter", sans-serif;
+  --font-heading: "Space Grotesk", "Inter", sans-serif;
+  --font-tight: "Space Grotesk", "Inter", sans-serif;
+  --font-product: "Inter Tight", "Inter", sans-serif;
   --font-work: "Work Sans", "Inter", sans-serif;
 
   --breakpoint-sm: 40rem;
@@ -12,24 +14,24 @@
 }
 
 :root {
-  --bg: #060608;
-  --bg-footer: #050505;
-  --text: #fcfcfc;
+  --bg: #000000;
+  --bg-footer: #000000;
+  --text: #ffffff;
   --text-strong: #ffffff;
-  --text-muted: #7e7e97;
-  --text-dim: #999999;
-  --text-about: #e3e4e6;
-  --text-footer: #808080;
-  --heading-case: #ababba;
-  --heading-case-label: #5c5c6a;
+  --text-muted: #d8d8e2;
+  --text-dim: #c4c4d0;
+  --text-about: #ffffff;
+  --text-footer: #c4c4d0;
+  --heading-case: #ffffff;
+  --heading-case-label: #ffffff;
   --chip-bg: #1a1a1a;
-  --chip-text: #999999;
+  --chip-text: #e4e4ec;
   --chip-link: #0099ff;
   --border-soft: #424257;
   --border-card: #1c1c25;
   --pill-bg: #f5f8fd;
-  --pill-text: #060608;
-  --heading-collab: #e4e4e7;
+  --pill-text: #000000;
+  --heading-collab: #ffffff;
   --accent: #a43889;
   --grad-from: #bc3cd8;
   --grad-to: #c44b8c;
@@ -48,22 +50,22 @@
 html[data-theme="light"] {
   --bg: #f5f8fd;
   --bg-footer: #eef2f9;
-  --text: #1a1a23;
-  --text-strong: #060608;
-  --text-muted: #5c5c6a;
-  --text-dim: #6b6b7b;
-  --text-about: #2a2a35;
-  --text-footer: #6b6b7b;
-  --heading-case: #0c0c13;
-  --heading-case-label: #7e7e97;
+  --text: #000000;
+  --text-strong: #000000;
+  --text-muted: #26262f;
+  --text-dim: #3d3d47;
+  --text-about: #000000;
+  --text-footer: #3d3d47;
+  --heading-case: #000000;
+  --heading-case-label: #000000;
   --chip-bg: #ffffff;
-  --chip-text: #5c5c6a;
+  --chip-text: #26262f;
   --chip-link: #0055ff;
   --border-soft: #b9b9cc;
   --border-card: #d8dcea;
-  --pill-bg: #060608;
-  --pill-text: #f5f8fd;
-  --heading-collab: #424257;
+  --pill-bg: #000000;
+  --pill-text: #ffffff;
+  --heading-collab: #000000;
   --tile-bg: #ffffff;
   --eyebrow-accent-grad: linear-gradient(135deg, #e8590c 0%, #d9480f 52%, #c2410c 100%);
   --eyebrow-accent-shimmer: linear-gradient(90deg, #e8590c 0%, #c2410c 25%, #f4b183 50%, #c2410c 75%, #e8590c 100%);
@@ -110,6 +112,15 @@ body {
   font-size: 16px;
   overflow-x: hidden;
   transition: background-color 0.35s ease, color 0.35s ease;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
 }
 
 ::selection {

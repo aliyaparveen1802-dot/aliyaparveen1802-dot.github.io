@@ -333,7 +333,7 @@ const selectedThumb = (page) =>
   }));
   check(
     "light theme: section uses light palette",
-    theme.head === "rgb(12, 12, 19)" && theme.chip === "rgb(255, 255, 255)",
+    theme.head === "rgb(0, 0, 0)" && theme.chip === "rgb(255, 255, 255)",
     JSON.stringify(theme)
   );
   await page.screenshot({ path: `${OUT}/showcase-light.png` });

@@ -406,7 +406,7 @@ async function openHome(page) {
       cardBg: getComputedStyle(card).backgroundColor,
     };
   });
-  check("light theme: heading switches to dark ink", theme.head !== theme.chipFg && theme.head === "rgb(12, 12, 19)", theme.head);
+  check("light theme: heading switches to dark ink", theme.head !== theme.chipFg && theme.head === "rgb(0, 0, 0)", theme.head);
   check("light theme: chip text legible on chip bg", theme.chipFg !== theme.chipBg && theme.chipBg !== "rgba(0, 0, 0, 0)", JSON.stringify({ fg: theme.chipFg, bg: theme.chipBg }));
 
   await page.evaluate(() => document.querySelector("#skills").scrollIntoView({ block: "start" }));

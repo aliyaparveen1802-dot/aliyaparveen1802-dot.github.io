@@ -547,7 +547,7 @@ async function openHome(page) {
   });
   check(
     "light theme: heading switches to dark ink",
-    theme.head === "rgb(12, 12, 19)",
+    theme.head === "rgb(0, 0, 0)",
     theme.head
   );
   check(

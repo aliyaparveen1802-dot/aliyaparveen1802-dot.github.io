@@ -71,7 +71,7 @@ export default function CaseStudyPersonas() {
                     <span className="section-eyebrow-accent text-[11px] font-medium uppercase tracking-[0.18em] text-[color:var(--heading-case-label)]">
                       {persona.tag}
                     </span>
-                    <h3 className="font-tight text-[28px] font-medium leading-[1.2] text-[color:var(--text-strong)]">
+                    <h3 className="font-tight text-[28px] font-semibold leading-[1.2] text-[color:var(--text-strong)]">
                       {persona.name}
                     </h3>
                   </div>

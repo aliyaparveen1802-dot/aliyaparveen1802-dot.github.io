@@ -39,7 +39,7 @@ export default function CaseStudyProblem() {
                   0{i + 1}
                 </span>
               </div>
-              <h3 className="font-tight text-[19px] font-medium leading-[1.4] text-[color:var(--text)]">
+              <h3 className="font-tight text-[19px] font-semibold leading-[1.4] text-[color:var(--text)]">
                 {problem.title}
               </h3>
               <p className="text-[15px] leading-[1.75] text-[color:var(--text-muted)]">

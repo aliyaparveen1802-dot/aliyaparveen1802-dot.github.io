@@ -122,7 +122,7 @@ export function CaseStudyWireframing() {
                 {stage.step}
               </span>
             </div>
-            <h3 className="font-tight text-[19px] font-medium leading-[1.4] text-[color:var(--text)]">
+            <h3 className="font-tight text-[19px] font-semibold leading-[1.4] text-[color:var(--text)]">
               {stage.title}
             </h3>
             <p className="text-[15px] leading-[1.75] text-[color:var(--text-muted)]">

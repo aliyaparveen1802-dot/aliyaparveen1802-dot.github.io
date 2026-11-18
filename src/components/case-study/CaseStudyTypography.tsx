@@ -23,11 +23,11 @@ export default function CaseStudyTypography() {
 
           <div className="flex flex-col gap-3 overflow-hidden rounded-[16px] border border-[color:var(--border-card)] bg-[color:var(--chip-bg)]">
             <div className="flex items-baseline justify-between gap-4 border-b border-[color:var(--border-card)] px-6 py-5">
-              <span className="font-tight text-[clamp(40px,5vw,64px)] font-semibold leading-none tracking-[-0.03em] text-[color:var(--text-strong)]">
+              <span className="font-product text-[clamp(40px,5vw,64px)] font-semibold leading-none tracking-[-0.03em] text-[color:var(--text-strong)]">
                 Aa
               </span>
               <span className="flex flex-col items-end gap-1">
-                <span className="font-tight text-[18px] font-medium text-[color:var(--text-strong)]">
+                <span className="font-product text-[18px] font-medium text-[color:var(--text-strong)]">
                   Inter Tight / Inter
                 </span>
                 <span className="text-[13px] text-[color:var(--text-dim)]">
@@ -47,7 +47,7 @@ export default function CaseStudyTypography() {
                 <span
                   className={`text-[color:var(--text-strong)] ${
                     row.role === "Display"
-                      ? "font-tight text-[26px] font-semibold tracking-[-0.02em]"
+                      ? "font-product text-[26px] font-semibold tracking-[-0.02em]"
                       : row.role === "Heading"
                         ? "text-[19px] font-medium"
                         : row.role === "Caption"

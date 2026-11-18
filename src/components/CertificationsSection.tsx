@@ -48,23 +48,23 @@ function CertificatePreview({ cert, full = false }: { cert: Certificate; full?: 
       <span className="mb-3 flex h-8 w-8 items-center justify-center rounded-[9px] bg-[#101D25] text-[11px] font-semibold text-[#F8F6F0]">
         {idfOrganization.shortName}
       </span>
-      <span className="text-[9px] font-semibold uppercase tracking-[0.3em] text-[#8b8471]">
+      <span className="text-[9px] font-semibold uppercase tracking-[0.3em] text-[#5f5a4a]">
         Certificate of Completion
       </span>
       <p
-        className={`mt-2.5 max-w-[92%] font-tight font-medium leading-[1.3] text-[#1b1b22] ${
+        className={`mt-2.5 max-w-[92%] font-tight font-medium leading-[1.3] text-[#000000] ${
           full ? "text-[clamp(17px,2.4vw,26px)]" : "text-[clamp(12px,1.4vw,15px)]"
         }`}
       >
         {cert.title}
       </p>
-      <span className="mt-2.5 text-[10px] tracking-[0.12em] text-[#6f6a5c]">
+      <span className="mt-2.5 text-[10px] tracking-[0.12em] text-[#4a463c]">
         {idfOrganization.name} · {cert.year}
       </span>
 
       <span className="absolute bottom-4 left-6 flex flex-col items-start gap-1">
         <span className="h-px w-20 bg-[#b7ae95]" />
-        <span className="text-[8px] uppercase tracking-[0.18em] text-[#9a9280]">
+        <span className="text-[8px] uppercase tracking-[0.18em] text-[#6a6455]">
           Issued by {idfOrganization.shortName}
         </span>
       </span>
@@ -228,7 +228,7 @@ export default function CertificationsSection() {
           <span className="rounded-full border border-[color:var(--border-card)] bg-[color:var(--chip-bg)]/70 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.26em] backdrop-blur-md">
             <span className="cert-label">Learn · Explore · Evolve</span>
           </span>
-          <h2 className="font-tight text-[clamp(30px,4.4vw,54px)] font-medium leading-[1.12] tracking-[-0.01em] text-[color:var(--heading-case)]">
+          <h2 className="font-tight text-[clamp(30px,4.4vw,54px)] font-semibold leading-[1.12] tracking-[-0.01em] text-[color:var(--heading-case)]">
             Credentials &amp; Continuous Learning
           </h2>
           <p className="max-w-[680px] text-[16px] leading-[1.8] text-[color:var(--text-muted)] md:text-[17px]">
@@ -246,7 +246,7 @@ export default function CertificationsSection() {
             <span className="section-eyebrow-accent text-[11px] font-medium uppercase tracking-[0.2em] text-[color:var(--heading-case-label)]">
               01 — Organization
             </span>
-            <h3 className="font-tight text-[clamp(19px,2.4vw,26px)] font-medium leading-[1.25] text-[color:var(--text-strong)]">
+            <h3 className="font-tight text-[clamp(19px,2.4vw,26px)] font-semibold leading-[1.25] text-[color:var(--text-strong)]">
               {idfOrganization.name}
             </h3>
             <span className="inline-flex w-fit items-center gap-2 rounded-full border border-[color:var(--border-card)] bg-[color:var(--bg)] px-3 py-1 text-[11px] font-medium uppercase tracking-[0.16em] text-[color:var(--text-muted)]">
@@ -286,7 +286,7 @@ export default function CertificationsSection() {
                     </span>
                   </div>
 
-                  <h4 className="font-tight text-[17px] font-medium leading-[1.35] text-[color:var(--text-strong)]">
+                  <h4 className="font-tight text-[17px] font-semibold leading-[1.35] text-[color:var(--text-strong)]">
                     {cert.title}
                   </h4>
                   <p className="text-[13px] leading-[1.6] text-[color:var(--text-muted)]">
@@ -389,7 +389,7 @@ export default function CertificationsSection() {
                 </span>
               </div>
 
-              <h3 className="font-tight text-[clamp(21px,2.6vw,30px)] font-medium leading-[1.3] text-[color:var(--text-strong)]">
+              <h3 className="font-tight text-[clamp(21px,2.6vw,30px)] font-semibold leading-[1.3] text-[color:var(--text-strong)]">
                 {schoolOfTechies.program}
               </h3>
 
@@ -445,7 +445,7 @@ export default function CertificationsSection() {
                   <span className="section-eyebrow-accent text-[11px] font-medium uppercase tracking-[0.18em] text-[color:var(--heading-case-label)]">
                     {active.index} · {active.year}
                   </span>
-                  <h4 className="font-tight text-[clamp(17px,2.2vw,23px)] font-medium leading-[1.3] text-[color:var(--text-strong)]">
+                  <h4 className="font-tight text-[clamp(17px,2.2vw,23px)] font-semibold leading-[1.3] text-[color:var(--text-strong)]">
                     {active.title}
                   </h4>
                   <p className="text-[13px] text-[color:var(--text-muted)]">{active.organization}</p>

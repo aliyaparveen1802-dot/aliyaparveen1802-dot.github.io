@@ -137,7 +137,7 @@ export default function CaseStudyJourney() {
                   <span className="section-eyebrow-accent font-tight text-[12px] font-medium tracking-[0.18em] text-[color:var(--heading-case-label)]">
                     {stage.step}
                   </span>
-                  <h3 className="font-tight text-[22px] font-medium leading-[1.3] text-[color:var(--text-strong)]">
+                  <h3 className="font-tight text-[22px] font-semibold leading-[1.3] text-[color:var(--text-strong)]">
                     {stage.title}
                   </h3>
                 </div>

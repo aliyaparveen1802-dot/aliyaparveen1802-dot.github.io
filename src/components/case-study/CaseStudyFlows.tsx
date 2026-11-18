@@ -22,7 +22,7 @@ export default function CaseStudyFlows() {
                 {flow.id}
               </span>
               <span className="h-px flex-1 bg-[color:var(--border-card)]" />
-              <h3 className="font-tight text-[20px] font-medium text-[color:var(--text-strong)] md:text-[24px]">
+              <h3 className="font-tight text-[20px] font-semibold text-[color:var(--text-strong)] md:text-[24px]">
                 {flow.title}
               </h3>
             </div>

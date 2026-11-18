@@ -48,7 +48,7 @@ export default function CaseStudySolution() {
                     {feature.status}
                   </Tag>
                 </div>
-                <h3 className="font-tight text-[clamp(24px,3vw,34px)] font-medium leading-[1.3] text-[color:var(--text-strong)]">
+                <h3 className="font-tight text-[clamp(24px,3vw,34px)] font-semibold leading-[1.3] text-[color:var(--text-strong)]">
                   {feature.title}
                 </h3>
                 <p className="max-w-[520px] text-[16px] leading-[1.85] text-[color:var(--text-muted)]">

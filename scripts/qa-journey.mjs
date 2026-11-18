@@ -224,7 +224,7 @@ const rectFn = `
     node: getComputedStyle(el.querySelector(".journey-node")).boxShadow,
   }));
   const iconAfter = await iconState(stageEls[1]);
-  check("hover: heading brightens", before.title !== after.title, `${before.title} → ${after.title}`);
+  check("hover: heading renders pure white", after.title === "rgb(255, 255, 255)", `${before.title} → ${after.title}`);
   check("hover: timeline node highlights", before.node !== after.node, after.node.slice(0, 60) + "…");
   check("hover: icon animates subtly", iconBefore !== iconAfter, `${iconBefore} → ${iconAfter}`);
 
@@ -436,7 +436,7 @@ const rectFn = `
   });
   check(
     "light theme: section uses portfolio light palette",
-    colors.bg === "rgb(245, 248, 253)" && colors.heading === "rgb(6, 6, 8)",
+    colors.bg === "rgb(245, 248, 253)" && colors.heading === "rgb(0, 0, 0)",
     JSON.stringify(colors)
   );
 

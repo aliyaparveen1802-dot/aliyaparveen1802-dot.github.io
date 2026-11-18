@@ -22,7 +22,7 @@ export default function CaseStudyDecisions() {
             <span className="font-tight text-[12px] font-medium tracking-[0.18em] text-[color:var(--grad-from)]">
               {String(i + 1).padStart(2, "0")}
             </span>
-            <h3 className="font-tight text-[17px] font-medium leading-[1.45] text-[color:var(--text-strong)]">
+            <h3 className="font-tight text-[17px] font-semibold leading-[1.45] text-[color:var(--text-strong)]">
               {decision.title}
             </h3>
             <p className="text-[14.5px] leading-[1.75] text-[color:var(--text-muted)]">

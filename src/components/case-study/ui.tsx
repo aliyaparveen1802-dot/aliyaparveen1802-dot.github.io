@@ -39,7 +39,7 @@ export function Section({
               <h2
                 id={titleId}
                 data-reveal
-                className="max-w-[900px] font-tight text-[clamp(28px,4vw,50px)] font-medium leading-[1.15] tracking-[-0.01em] text-[color:var(--heading-case)]"
+                className="max-w-[900px] font-tight text-[clamp(28px,4vw,50px)] font-semibold leading-[1.15] tracking-[-0.01em] text-[color:var(--heading-case)]"
               >
                 {title}
               </h2>

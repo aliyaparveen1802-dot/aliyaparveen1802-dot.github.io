@@ -57,7 +57,7 @@ export default function CaseStudyShowcase() {
               {String(active + 1).padStart(2, "0")} / {String(count).padStart(2, "0")}
             </span>
           </div>
-          <h3 className="font-tight text-[24px] font-medium leading-[1.3] text-[color:var(--text-strong)]">
+          <h3 className="font-tight text-[24px] font-semibold leading-[1.3] text-[color:var(--text-strong)]">
             {screen.title}
           </h3>
           <p className="text-[15px] leading-[1.8] text-[color:var(--text-muted)]">
@@ -146,7 +146,7 @@ export default function CaseStudyShowcase() {
             <p className="section-eyebrow-accent text-[12px] font-medium uppercase tracking-[0.2em] text-[color:var(--heading-case-label)] md:text-[13px]">
               Desktop experience
             </p>
-            <h3 className="font-tight text-[clamp(20px,2.4vw,30px)] font-medium leading-[1.3] text-[color:var(--text-strong)]">
+            <h3 className="font-tight text-[clamp(20px,2.4vw,30px)] font-semibold leading-[1.3] text-[color:var(--text-strong)]">
               The same journey, at full size.
             </h3>
           </div>

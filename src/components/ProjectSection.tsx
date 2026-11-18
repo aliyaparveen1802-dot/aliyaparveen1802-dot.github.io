@@ -107,7 +107,7 @@ export default function ProjectSection() {
             PROJECT
           </p>
           <div className="flex flex-col gap-4">
-            <h2 className="proj-heading font-tight text-[clamp(34px,5vw,64px)] font-medium leading-[1.08] tracking-[-0.02em] text-[color:var(--text-strong)]">
+            <h2 className="proj-heading font-tight text-[clamp(34px,5vw,64px)] font-semibold leading-[1.08] tracking-[-0.02em] text-[color:var(--text-strong)]">
               SkyVoyage
             </h2>
             <p className="proj-heading max-w-[680px] font-tight text-[clamp(19px,2.4vw,28px)] font-medium leading-[1.4] text-[color:var(--heading-case)]">
@@ -185,7 +185,7 @@ export default function ProjectSection() {
               <div className="flex flex-col gap-3">
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex flex-col gap-1.5">
-                    <h3 className="font-tight text-[clamp(24px,2.6vw,34px)] font-medium leading-[1.3] text-[color:var(--text)]">
+                    <h3 className="font-tight text-[clamp(24px,2.6vw,34px)] font-semibold leading-[1.3] text-[color:var(--text)]">
                       {card.title}
                     </h3>
                     <p className="text-[15px] leading-[1.7] text-[color:var(--text-muted)]">
