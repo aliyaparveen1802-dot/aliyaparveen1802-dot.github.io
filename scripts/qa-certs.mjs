@@ -161,8 +161,13 @@ async function openHome(page) {
     JSON.stringify(cards.map((c) => ({ orgOk: c.text.includes("(IxDF)"), year: c.hasYear, btn: c.viewBtn })))
   );
   check(
-    "desktop: no fabricated links or images (placeholders + no anchors)",
-    cards.every((c) => c.anchors === 0 && c.imgs === 0 && c.placeholders >= 1),
+    "desktop: real certificate images on 01/02, placeholder on 03, no anchors",
+    cards.length === 3 &&
+      cards.every((c) => c.anchors === 0) &&
+      cards[0].imgs === 1 &&
+      cards[1].imgs === 1 &&
+      cards[2].imgs === 0 &&
+      cards[2].placeholders >= 1,
     JSON.stringify(cards.map((c) => ({ a: c.anchors, i: c.imgs, ph: c.placeholders })))
   );
 
@@ -171,9 +176,13 @@ async function openHome(page) {
     els.map((i) => i.getAttribute("src"))
   );
   const logosOnly =
-    sectionImgs.length > 0 && sectionImgs.every((s) => s?.startsWith("/logos/school-of-techies"));
+    sectionImgs.length > 0 &&
+    sectionImgs.every(
+      (s) =>
+        s?.startsWith("/logos/school-of-techies") || s?.startsWith("/certificates/certificate-")
+    );
   check(
-    "desktop: no fabricated links; only real School of Techies logo images",
+    "desktop: only real logo + certificate images (no fake assets)",
     sectionAnchors === 0 && logosOnly,
     `anchors=${sectionAnchors} imgs=${JSON.stringify(sectionImgs)}`
   );
@@ -279,25 +288,68 @@ async function openHome(page) {
   await sleep(600);
   const lb = await page.evaluate(() => {
     const dlg = document.querySelector('[role="dialog"]');
+    const img = dlg?.querySelector("img");
+    const dl = dlg?.querySelector("a[download]");
     return {
       open: !!dlg,
       modal: dlg?.getAttribute("aria-modal") === "true",
       title: dlg?.querySelector("h4")?.textContent || "",
       bodyOverflow: getComputedStyle(document.body).overflow,
-      hasImg: !!dlg?.querySelector("img"),
-      hasPaper: !!dlg?.querySelector('[aria-hidden="true"]'),
+      hasImg: !!img,
+      hasPaper: !!dlg?.querySelector('div[aria-hidden="true"][class*="aspect"]'),
+      imgSrc: img?.getAttribute("src") || "",
+      naturalW: img?.naturalWidth || 0,
+      objectFit: img ? getComputedStyle(img).objectFit : "",
+      zoomBtns: ["Zoom in", "Zoom out", "Reset zoom"].every((l) =>
+        dlg?.querySelector(`button[aria-label="${l}"]`)
+      ),
+      download: dl ? dl.getAttribute("href") || "" : "",
     };
   });
   check("lightbox: opens as aria-modal dialog", lb.open && lb.modal, JSON.stringify(lb));
   check("lightbox: shows certificate title", lb.title === TITLES[0], lb.title);
   check("lightbox: page scroll locked while open", lb.bodyOverflow === "hidden", lb.bodyOverflow);
   check(
-    "lightbox: preview inside (placeholder paper, no fake image)",
-    lb.hasPaper && !lb.hasImg,
-    `paper=${lb.hasPaper} img=${lb.hasImg}`
+    "lightbox: original certificate image, object-contain, uncropped",
+    lb.hasImg &&
+      !lb.hasPaper &&
+      lb.imgSrc.endsWith("certificate-hci-foundations-of-ux-design.jpg") &&
+      lb.naturalW >= 1000 &&
+      lb.objectFit === "contain",
+    JSON.stringify({ imgSrc: lb.imgSrc, naturalW: lb.naturalW, objectFit: lb.objectFit, paper: lb.hasPaper })
+  );
+  check(
+    "lightbox: zoom controls + download button present",
+    lb.zoomBtns && lb.download.endsWith("certificate-hci-foundations-of-ux-design.jpg"),
+    JSON.stringify({ zoomBtns: lb.zoomBtns, download: lb.download })
   );
   await flush(page);
   await page.screenshot({ path: `${OUT}/certs-lightbox.png` });
+
+  const zoomRes = await page.evaluate(async () => {
+    const q = (s) => document.querySelector(s);
+    const img = q('[role="dialog"] img');
+    const pct = () => q('button[aria-label="Reset zoom"]')?.textContent?.trim() || "";
+    const before = pct();
+    q('button[aria-label="Zoom in"]')?.click();
+    await new Promise((r) => setTimeout(r, 350));
+    const after = pct();
+    const tf = img?.style.transform || "";
+    q('button[aria-label="Reset zoom"]')?.click();
+    await new Promise((r) => setTimeout(r, 350));
+    const reset = pct();
+    const tfReset = img?.style.transform || "";
+    return { before, after, reset, tf, tfReset };
+  });
+  check(
+    "lightbox: zoom in + reset change image scale",
+    zoomRes.before === "100%" &&
+      zoomRes.after === "150%" &&
+      zoomRes.tf.includes("scale(1.5)") &&
+      zoomRes.reset === "100%" &&
+      zoomRes.tfReset.includes("scale(1)"),
+    JSON.stringify(zoomRes)
+  );
 
   await page.keyboard.press("Escape");
   await sleep(450);
@@ -318,6 +370,36 @@ async function openHome(page) {
   await sleep(450);
   const afterBd = await page.evaluate(() => !!document.querySelector('[role="dialog"]'));
   check("lightbox: backdrop click closes", !afterBd, String(afterBd));
+
+  // certificate 03 has no supplied image → placeholder stays, no fake image/download/zoom
+  const btns = await page.$$("#certifications .cert-card button");
+  await btns[2].evaluate((el) => el.scrollIntoView({ block: "center" }));
+  await sleep(500);
+  await btns[2].click();
+  await sleep(500);
+  const lb3 = await page.evaluate(() => {
+    const dlg = document.querySelector('[role="dialog"]');
+    return {
+      open: !!dlg,
+      title: dlg?.querySelector("h4")?.textContent || "",
+      hasImg: !!dlg?.querySelector("img"),
+      hasPaper: !!dlg?.querySelector('div[aria-hidden="true"][class*="aspect"]'),
+      hasDownload: !!dlg?.querySelector("a[download]"),
+      hasZoom: !!dlg?.querySelector('button[aria-label="Zoom in"]'),
+    };
+  });
+  check(
+    "lightbox: cert 03 keeps placeholder preview (no fake image)",
+    lb3.open &&
+      lb3.title === TITLES[2] &&
+      !lb3.hasImg &&
+      lb3.hasPaper &&
+      !lb3.hasDownload &&
+      !lb3.hasZoom,
+    JSON.stringify(lb3)
+  );
+  await page.keyboard.press("Escape");
+  await sleep(400);
 
   // ---------- 6. School of Techies ----------
   const school = await page.evaluate(() => {

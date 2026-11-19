@@ -1,15 +1,24 @@
-import { useEffect, useRef, useState, type MouseEvent as ReactMouseEvent } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+  type MouseEvent as ReactMouseEvent,
+  type PointerEvent as ReactPointerEvent,
+} from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
   ArrowUpRight,
   Award,
   Clock,
+  Download,
   Frame,
   Maximize2,
   PenTool,
   Sparkles,
   X,
+  ZoomIn,
+  ZoomOut,
 } from "lucide-react";
 import {
   idfCertificates,
@@ -22,14 +31,16 @@ import { usePrefersReducedMotion } from "../hooks/usePrefersReducedMotion";
 
 gsap.registerPlugin(ScrollTrigger);
 
+const ZOOM_STEPS = [1, 1.5, 2, 3, 4];
+
 function CertificatePreview({ cert, full = false }: { cert: Certificate; full?: boolean }) {
   if (cert.image) {
     return (
       <img
         src={cert.image}
         alt={`${cert.title} — certificate`}
-        className={`w-full rounded-[14px] border border-[color:var(--border-card)] object-cover ${
-          full ? "max-h-[70vh]" : "aspect-[4/3]"
+        className={`w-full rounded-[14px] border border-[color:var(--border-card)] ${
+          full ? "max-h-[70vh] object-contain" : "aspect-[4/3] object-cover"
         }`}
       />
     );
@@ -87,6 +98,86 @@ export default function CertificationsSection() {
     setActive(cert);
   };
   const closeCert = () => setActive(null);
+
+  // ---------- lightbox zoom / pan ----------
+  const [zoom, setZoom] = useState(1);
+  const [offset, setOffset] = useState({ x: 0, y: 0 });
+  const [dragging, setDragging] = useState(false);
+  const viewportRef = useRef<HTMLDivElement>(null);
+  const imgRef = useRef<HTMLImageElement>(null);
+  const dragRef = useRef<{ x: number; y: number; ox: number; oy: number } | null>(null);
+
+  const clampOffset = (z: number, ox: number, oy: number) => {
+    const vp = viewportRef.current;
+    const img = imgRef.current;
+    if (!vp || !img || z <= 1) return { x: 0, y: 0 };
+    const maxX = Math.max(0, (img.offsetWidth * z - vp.clientWidth) / 2);
+    const maxY = Math.max(0, (img.offsetHeight * z - vp.clientHeight) / 2);
+    return {
+      x: Math.min(maxX, Math.max(-maxX, ox)),
+      y: Math.min(maxY, Math.max(-maxY, oy)),
+    };
+  };
+
+  const applyZoom = (z: number) => {
+    setZoom(z);
+    setOffset((o) => clampOffset(z, o.x, o.y));
+  };
+  const zoomIn = () => {
+    const i = ZOOM_STEPS.indexOf(zoom);
+    applyZoom(ZOOM_STEPS[Math.min(ZOOM_STEPS.length - 1, i + 1)]);
+  };
+  const zoomOut = () => {
+    const i = ZOOM_STEPS.indexOf(zoom);
+    applyZoom(ZOOM_STEPS[Math.max(0, i - 1)]);
+  };
+  const resetZoom = () => applyZoom(1);
+
+  // reset zoom/pan whenever a certificate opens or the lightbox closes
+  useEffect(() => {
+    setZoom(1);
+    setOffset({ x: 0, y: 0 });
+    setDragging(false);
+    dragRef.current = null;
+  }, [active]);
+
+  // wheel zoom (non-passive so the overlay does not scroll instead)
+  useEffect(() => {
+    if (!active?.image) return;
+    const vp = viewportRef.current;
+    if (!vp) return;
+    const onWheel = (e: WheelEvent) => {
+      e.preventDefault();
+      if (e.deltaY < 0) zoomIn();
+      else zoomOut();
+    };
+    vp.addEventListener("wheel", onWheel, { passive: false });
+    return () => vp.removeEventListener("wheel", onWheel);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [active?.image, zoom]);
+
+  const startDrag = (e: ReactPointerEvent<HTMLDivElement>) => {
+    if ((e.target as HTMLElement).closest("button")) return;
+    if (zoom <= 1) {
+      zoomIn();
+      return;
+    }
+    if (e.pointerType === "mouse" && e.button !== 0) return;
+    const vp = viewportRef.current;
+    if (!vp) return;
+    vp.setPointerCapture(e.pointerId);
+    dragRef.current = { x: e.clientX, y: e.clientY, ox: offset.x, oy: offset.y };
+    setDragging(true);
+  };
+  const moveDrag = (e: ReactPointerEvent<HTMLDivElement>) => {
+    const st = dragRef.current;
+    if (!st) return;
+    setOffset(clampOffset(zoom, st.ox + (e.clientX - st.x), st.oy + (e.clientY - st.y)));
+  };
+  const endDrag = () => {
+    dragRef.current = null;
+    setDragging(false);
+  };
 
   // ---------- entrance animations ----------
   useEffect(() => {
@@ -439,7 +530,64 @@ export default function CertificationsSection() {
             </button>
 
             <div className="flex flex-col gap-4 rounded-[20px] border border-[color:var(--border-card)] bg-[color:var(--bg)] p-4 shadow-[0_40px_90px_-30px_rgba(0,0,0,0.9)] md:p-5">
-              <CertificatePreview cert={active} full />
+              {active.image ? (
+                <div
+                  ref={viewportRef}
+                  onPointerDown={startDrag}
+                  onPointerMove={moveDrag}
+                  onPointerUp={endDrag}
+                  onPointerCancel={endDrag}
+                  className="relative overflow-hidden rounded-[14px] border border-[color:var(--border-card)] bg-black/40"
+                  style={{ touchAction: zoom > 1 ? "none" : "auto" }}
+                >
+                  <img
+                    ref={imgRef}
+                    src={active.image}
+                    alt={`${active.title} — certificate`}
+                    draggable={false}
+                    className={`block max-h-[70vh] w-full select-none object-contain ${
+                      dragging
+                        ? ""
+                        : "transition-transform duration-200 ease-out motion-reduce:transition-none"
+                    }`}
+                    style={{
+                      transform: `translate(${offset.x}px, ${offset.y}px) scale(${zoom})`,
+                      transformOrigin: "center center",
+                      cursor: zoom > 1 ? (dragging ? "grabbing" : "grab") : "zoom-in",
+                    }}
+                  />
+                  <div className="absolute right-2.5 top-2.5 z-10 flex items-center gap-0.5 rounded-full border border-white/15 bg-black/55 p-1 backdrop-blur-md">
+                    <button
+                      type="button"
+                      aria-label="Zoom out"
+                      onClick={zoomOut}
+                      disabled={zoom <= 1}
+                      className="flex h-8 w-8 items-center justify-center rounded-full text-white transition-colors duration-200 hover:bg-white/15 disabled:opacity-35"
+                    >
+                      <ZoomOut size={15} />
+                    </button>
+                    <button
+                      type="button"
+                      aria-label="Reset zoom"
+                      onClick={resetZoom}
+                      className="min-w-[48px] rounded-full px-1 py-1 text-[11px] font-semibold tabular-nums text-white transition-colors duration-200 hover:bg-white/15"
+                    >
+                      {Math.round(zoom * 100)}%
+                    </button>
+                    <button
+                      type="button"
+                      aria-label="Zoom in"
+                      onClick={zoomIn}
+                      disabled={zoom >= ZOOM_STEPS[ZOOM_STEPS.length - 1]}
+                      className="flex h-8 w-8 items-center justify-center rounded-full text-white transition-colors duration-200 hover:bg-white/15 disabled:opacity-35"
+                    >
+                      <ZoomIn size={15} />
+                    </button>
+                  </div>
+                </div>
+              ) : (
+                <CertificatePreview cert={active} full />
+              )}
               <div className="flex flex-wrap items-end justify-between gap-3 px-1 pb-1">
                 <div className="flex min-w-0 flex-col gap-1">
                   <span className="section-eyebrow-accent text-[11px] font-medium uppercase tracking-[0.18em] text-[color:var(--heading-case-label)]">
@@ -450,17 +598,29 @@ export default function CertificationsSection() {
                   </h4>
                   <p className="text-[13px] text-[color:var(--text-muted)]">{active.organization}</p>
                 </div>
-                {active.url && (
-                  <a
-                    href={active.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full border border-[color:var(--border-soft)] px-4 py-2 text-[13px] font-medium text-[color:var(--text-strong)] transition-all duration-300 hover:border-[color:var(--grad-from)]"
-                  >
-                    Open credential
-                    <ArrowUpRight size={14} />
-                  </a>
-                )}
+                <div className="flex flex-wrap items-center gap-2.5">
+                  {active.image && (
+                    <a
+                      href={active.image}
+                      download={active.image.split("/").pop() || "certificate.jpg"}
+                      className="inline-flex items-center gap-2 rounded-full border border-[color:var(--border-soft)] bg-[color:var(--bg)] px-4 py-2 text-[13px] font-medium text-[color:var(--text-strong)] transition-all duration-300 hover:border-[color:var(--grad-from)]"
+                    >
+                      <Download size={14} />
+                      Download
+                    </a>
+                  )}
+                  {active.url && (
+                    <a
+                      href={active.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 rounded-full border border-[color:var(--border-soft)] px-4 py-2 text-[13px] font-medium text-[color:var(--text-strong)] transition-all duration-300 hover:border-[color:var(--grad-from)]"
+                    >
+                      Open credential
+                      <ArrowUpRight size={14} />
+                    </a>
+                  )}
+                </div>
               </div>
             </div>
           </div>

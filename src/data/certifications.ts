@@ -31,7 +31,7 @@ export const idfCertificates: Certificate[] = [
     title: "Human-Computer Interaction: The Foundations of UX Design",
     organization: "Interaction Design Foundation (IxDF)",
     year: "2026",
-    image: null,
+    image: "/certificates/certificate-hci-foundations-of-ux-design.jpg",
     url: null,
   },
   {
@@ -40,7 +40,7 @@ export const idfCertificates: Certificate[] = [
     title: "AI for Designers",
     organization: "Interaction Design Foundation (IxDF)",
     year: "2026",
-    image: null,
+    image: "/certificates/certificate-ai-for-designers.jpg",
     url: null,
   },
   {
